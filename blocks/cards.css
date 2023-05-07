@@ -14,13 +14,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   list-style-type: none;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .card__description {
@@ -31,12 +31,25 @@
   padding-bottom: 25px;
   padding-left: 20px;
   padding-right: 20px;
+  border-radius: 0px 0px 10px 10px;
   align-items: center;
   justify-content: space-between;
+}
+
+.card__header {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__like-button {
   background: transparent url(../images/heart.svg) center no-repeat;
   width: 21px;
   height: 18px;
+  border: none;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
