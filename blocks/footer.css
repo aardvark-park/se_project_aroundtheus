@@ -24,3 +24,9 @@
     line-height: 17px;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .footer__copyright {
+    margin-left: 15px;
+  }
+}
