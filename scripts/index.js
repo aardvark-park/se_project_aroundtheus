@@ -1,3 +1,5 @@
+/* --------------------------------- Arrays --------------------------------- */
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -36,7 +38,10 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const cardList = document.querySelector(".cards__list");
 const profileEditSave = document.querySelector(".modal__save");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
 /* -------------------------------- Functions ------------------------------- */
 
@@ -60,8 +65,26 @@ function handleProfileSave(evt) {
   return;
 }
 
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardHeader = cardElement.querySelector(".card__header");
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardHeader.textContent = cardData.name;
+
+  return cardElement;
+}
+
 /* ----------------------------- Event Listeners ---------------------------- */
 
 edit.addEventListener("click", editPopUp);
 close.addEventListener("click", closePopUp);
 profileEditSave.addEventListener("click", handleProfileSave);
+
+/* ---------------------------------- Loops --------------------------------- */
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardList.prepend(cardElement);
+});
