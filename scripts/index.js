@@ -61,7 +61,7 @@ function handleProfileSave(evt) {
   evt.preventDefault();
   profileName.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  modal.classList.remove("modal_opened");
+  closePopUp();
   return;
 }
 
