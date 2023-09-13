@@ -53,23 +53,48 @@
         <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal">
+    <!-- ----------------------------- Edit modal ------------------------------ -->
+    <div class="modal" id="edit-modal">
       <div class="modal__container">
         <button class="modal__close" type="button"></button>
-        <form class="modal__form" name="modal__form">
+        <form class="modal__form" name="modal__form" id="edit-profile-form">
           <h3 class="modal__heading">Edit Profile</h3>
           <input
             class="modal__input"
             type="text"
-            name="title"
+            name="name"
             placeholder="Name"
-            id="profile-title-input"
+            id="profile-name-input"
           />
           <input
             class="modal__input"
             type="text"
             name="description"
             placeholder="Description"
+            id="profile-description-input"
+          />
+          <button type="submit" class="modal__save">Save</button>
+        </form>
+      </div>
+    </div>
+    <!-- --------------------------- Add card modal ---------------------------- -->
+    <div class="modal" id="add-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <form class="modal__form" name="modal__form" id="add-card-form">
+          <h3 class="modal__heading">New place</h3>
+          <input
+            class="modal__input modal__input_type_title"
+            type="text"
+            name="title"
+            placeholder="Title"
+            id="profile-title-input"
+          />
+          <input
+            class="modal__input modal__input_type_url"
+            type="text"
+            name="url"
+            placeholder="Image link"
             id="profile-description-input"
           />
           <button type="submit" class="modal__save">Save</button>
