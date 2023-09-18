@@ -31,6 +31,7 @@ const initialCards = [
 
 const edit = document.querySelector(".profile__edit-button");
 const add = document.querySelector(".profile__add-button");
+const card = document.querySelector(".card");
 const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-modal");
 const editProfileCloseModal = editProfileModal.querySelector(".modal__close");
@@ -43,6 +44,7 @@ const profileEditSubmit = editProfileModal.querySelector(".modal__save");
 const addCardSubmit = addCardModal.querySelector(".modal__save");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+// const deleteButton = document.querySelector(".card__delete-button");
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -90,6 +92,14 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardHeader = cardElement.querySelector(".card__header");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardHeader.textContent = cardData.name;
