@@ -36,14 +36,14 @@
   transition-delay: 0s;
 }
 
-.modal__image_container {
+.modal__image-container {
   display: flex;
   position: relative;
   flex-direction: column;
   margin: auto;
 }
 
-.modal__image_view {
+.modal__image-view {
   max-height: 540px;
   max-width: 816px;
 }
@@ -121,7 +121,7 @@
   opacity: 0.8;
 }
 
-.modal__image_caption {
+.modal__image-caption {
   color: #fff;
   font-family: Inter, Arial, Helvetica, serif;
   font-size: 12px;
@@ -131,7 +131,7 @@
 }
 
 @media screen and (max-width: 830px) {
-  .modal__image_view {
+  .modal__image-view {
     max-height: 540px;
     max-width: 600px;
   }
@@ -144,7 +144,7 @@
     top: -39.62px;
     right: 0px;
   }
-  .modal__image_view {
+  .modal__image-view {
     max-height: 500px;
     max-width: 450px;
   }
@@ -183,7 +183,7 @@
     line-height: 17px;
   }
 
-  .modal__image_view {
+  .modal__image-view {
     max-height: 299px;
     max-width: 240px;
   }

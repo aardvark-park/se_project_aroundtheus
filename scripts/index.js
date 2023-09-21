@@ -99,7 +99,7 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
   const imageSource = document.querySelector("#modal-image-view");
-  const imageCaption = document.querySelector(".modal__image_caption");
+  const imageCaption = document.querySelector(".modal__image-caption");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
