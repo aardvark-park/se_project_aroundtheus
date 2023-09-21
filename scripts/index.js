@@ -110,6 +110,7 @@ function getCardElement(cardData) {
     openModal(previewImageModal);
     imageSource.src = cardImage.src;
     imageCaption.textContent = cardHeader.textContent;
+    imageSource.alt = cardHeader.textContent;
   });
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
