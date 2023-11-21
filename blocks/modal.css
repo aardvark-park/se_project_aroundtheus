@@ -98,6 +98,29 @@
   line-height: 17px;
 }
 
+.modal__input_error {
+  border-bottom: 1px solid #f00;
+}
+
+.modal__error {
+  display: none;
+  position: relative;
+  color: #f00;
+  font-family: Inter, Arial, Helvetica, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 12px;
+  margin-top: -20px;
+  margin-left: 36px;
+  margin-bottom: 13px;
+}
+
+.modal__error_visible {
+  display: flex;
+}
+
 .modal__save {
   cursor: pointer;
   width: 358px;

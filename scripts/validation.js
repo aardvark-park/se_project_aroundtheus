@@ -1,8 +1,28 @@
+function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+  inputEl.classList.add(inputErrorClass);
+  errorMessageEl.textContent = inputEl.validationMessage;
+  errorMessageEl.classList.add(errorClass);
+  inputEl.classList.add("modal__input_error");
+}
+
+function hideInputError(formEl, inputEl, options) {}
+
+function checkInputValidity(formEl, inputEl, options) {
+  if (!inputEl.validity.valid) {
+    showInputError(formEl, inputEl, options);
+  } else {
+    hideInputError(formEl, inputEl, options);
+  }
+}
+
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   inputEls.forEach((inputEl) => {
-    inputEl.addEventListener("input", () => console.log("input ran"));
+    inputEl.addEventListener("input", (evt) => {
+      checkInputValidity(formEl, inputEl, options);
+    });
   });
 }
 
