@@ -136,6 +136,7 @@ document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
     closeModal(editProfileModal);
     closeModal(addCardModal);
+    closeModal(previewImageModal);
   }
 });
 
