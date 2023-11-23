@@ -49,6 +49,7 @@ const profileEditSubmit = editProfileModal.querySelector(".modal__save");
 const addCardSubmit = addCardModal.querySelector(".modal__save");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+const masks = document.querySelectorAll(".modal__mask");
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -64,8 +65,10 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 /* -------------------------------- Functions ------------------------------- */
 
 function openModal(modal) {
+  const modalMask = modal.querySelector(".modal__mask");
   modal.classList.add("modal_opened");
   body.classList.add("body__no-scroll");
+  modalMask.classList.add("modal__mask_opened");
 }
 
 function closeModal(modal) {
@@ -129,6 +132,12 @@ edit.addEventListener("click", () => {
 add.addEventListener("click", () => openModal(addCardModal));
 editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closeModal(editProfileModal);
+    closeModal(addCardModal);
+  }
+});
 
 /* ---------------------------------- Loops --------------------------------- */
 
@@ -136,4 +145,8 @@ initialCards.forEach((cardData) => renderCard(cardData, cardList));
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closeModal(popup));
+});
+masks.forEach((mask) => {
+  const popup = mask.closest(".modal");
+  mask.addEventListener("click", () => closeModal(popup));
 });
