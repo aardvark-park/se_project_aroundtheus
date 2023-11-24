@@ -49,7 +49,7 @@ const profileEditSubmit = editProfileModal.querySelector(".modal__save");
 const addCardSubmit = addCardModal.querySelector(".modal__save");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const masks = document.querySelectorAll(".modal__mask");
+const modals = document.querySelectorAll(".modal");
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -63,17 +63,21 @@ const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
 /* -------------------------------- Functions ------------------------------- */
+function escapeListener(evt) {
+  if (evt.key === "Escape") {
+    const popup = document.querySelector(".modal_opened");
+    closeModal(popup);
+  }
+}
 
 function openModal(modal) {
-  const modalMask = modal.querySelector(".modal__mask");
   modal.classList.add("modal_opened");
-  body.classList.add("body__no-scroll");
-  modalMask.classList.add("modal__mask_opened");
+  document.addEventListener("keydown", escapeListener);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  body.classList.remove("body__no-scroll");
+  document.removeEventListener("keydown", escapeListener);
 }
 
 function renderCard(cardData, wrapper) {
@@ -132,22 +136,18 @@ edit.addEventListener("click", () => {
 add.addEventListener("click", () => openModal(addCardModal));
 editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closeModal(editProfileModal);
-    closeModal(addCardModal);
-    closeModal(previewImageModal);
-  }
-});
 
 /* ---------------------------------- Loops --------------------------------- */
 
 initialCards.forEach((cardData) => renderCard(cardData, cardList));
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(popup));
-});
-masks.forEach((mask) => {
-  const popup = mask.closest(".modal");
-  mask.addEventListener("click", () => closeModal(popup));
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("modal_opened") ||
+      evt.target.classList.contains("modal__close")
+    ) {
+      closeModal(modal);
+    }
+  });
 });

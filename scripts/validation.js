@@ -11,7 +11,7 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   inputEl.classList.remove(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
   errorMessageEl.classList.remove(errorClass);
-  inputEl.classList.remove("modal__input_error");
+  inputEl.classList.remove(inputErrorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -57,17 +57,17 @@ function enableValidation(options) {
 
     setEventListeners(formEl, options);
 
-    // look for all inputs in the form
-    // loop through all inputs to validate
+    // looks for all inputs in the form
+    // loops through all inputs to validate
     // if input is invalid:
-    // get validation message
-    // add error class to input
-    // display error message
-    // disable button
+    // gets validation message
+    // adds error class to input
+    // displays error message
+    // disables button
 
     // if all inputs valid:
-    // enable button
-    // reset error messages
+    // enables button
+    // resets error messages
   });
 }
 
