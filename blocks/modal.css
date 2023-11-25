@@ -140,7 +140,7 @@
   opacity: 0.8;
 }
 
-.modal__button_disabled {
+.modal__save_disabled {
   background-color: #fff;
   color: #000;
   border-radius: 2px;
