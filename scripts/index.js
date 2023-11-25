@@ -63,7 +63,7 @@ const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
 /* -------------------------------- Functions ------------------------------- */
-function escapeListener(evt) {
+function handleEscapePress(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".modal_opened");
     closeModal(popup);
@@ -72,12 +72,12 @@ function escapeListener(evt) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escapeListener);
+  document.addEventListener("keydown", handleEscapePress);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escapeListener);
+  document.removeEventListener("keydown", handleEscapePress);
 }
 
 function renderCard(cardData, wrapper) {

@@ -3,7 +3,7 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   inputEl.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
   errorMessageEl.classList.add(errorClass);
-  inputEl.classList.add("modal__input_error");
+  inputEl.classList.add(inputErrorClass);
 }
 
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
