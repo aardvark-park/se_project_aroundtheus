@@ -1,3 +1,6 @@
+/* --------------------------------- Modules -------------------------------- */
+import Card from "../components/Card.js";
+import Validation from "../components/FormValidator.js";
 /* --------------------------------- Arrays --------------------------------- */
 
 const initialCards = [
@@ -61,6 +64,11 @@ const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-url-input");
 const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
+
+/* --------------------------------- Classes -------------------------------- */
+let cardData = initialCards.forEach((card) => {
+  new Card(card);
+});
 
 /* -------------------------------- Functions ------------------------------- */
 function handleEscapePress(evt) {
