@@ -55,6 +55,10 @@ export default class FormValidator {
       });
     });
   }
+
+  testMethod() {
+    console.log(this);
+  }
 }
 
 // function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {

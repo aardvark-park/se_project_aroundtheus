@@ -1,5 +1,5 @@
 /* --------------------------------- Modules -------------------------------- */
-import Card from "../components/Card.js";
+import Card from "../components/Cards.js";
 import Validation from "../components/FormValidator.js";
 /* --------------------------------- Arrays --------------------------------- */
 
@@ -68,6 +68,16 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 /* --------------------------------- Classes -------------------------------- */
 let cardData = initialCards.forEach((card) => {
   new Card(card);
+});
+
+initialCards.forEach((card) => {
+  const cardInstance = new Card(card, "#card-template");
+  cardInstance.getView();
+});
+
+modals.forEach((card) => {
+  const cardValidation = new Validation(card);
+  cardValidation.testMethod();
 });
 
 /* -------------------------------- Functions ------------------------------- */
