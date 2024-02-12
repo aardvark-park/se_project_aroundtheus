@@ -1,12 +1,11 @@
 export default class Card {
   constructor(card, cardSelector) {
     this._cardSelector = cardSelector;
-    this._text = card.name;
+    this._name = card.name;
     this._link = card.link;
   }
 
   _setEventListeners() {
-    alert("just a test..");
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
@@ -17,9 +16,12 @@ export default class Card {
       .addEventListener("click", () => {
         _handleDeleteButton();
       });
-    this._cardImageElement.addEventListener("click", () => {
-      this._handleImageClick(this);
-    });
+
+    this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick(this);
+      });
   }
 
   _handleLikeButton() {
@@ -30,12 +32,14 @@ export default class Card {
 
   _handleDeleteButton() {
     this._cardElement.remove();
+    this._cardElement = null;
+  }
+
+  _handleImageClick() {
+    console.log("image");
   }
 
   getView() {
-    console.log(this._text);
-    console.log(this._name);
-    console.log(this._cardSelector);
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
