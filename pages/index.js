@@ -67,7 +67,7 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 
 /* --------------------------------- Classes -------------------------------- */
 let cardData = initialCards.forEach((card) => {
-  new Card(card);
+  new Card(card, cardSelector, handleImageClick);
 });
 
 initialCards.forEach((card) => {
@@ -99,7 +99,7 @@ function closeModal(modal) {
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
+  const cardElement = cardSelector(cardData);
   wrapper.prepend(cardElement);
 }
 
@@ -119,7 +119,20 @@ function handleAddCardSubmit(evt) {
   addCardForm.reset();
 }
 
-function getCardElement(cardData) {
+// added handleImageClick as a function for the cardImage event listener
+// currently bringing up the modal, but image and caption are missing
+function handleImageClick() {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardHeader = cardElement.querySelector(".card__header");
+  openModal(previewImageModal);
+  imageSource.src = cardImage.src;
+  imageCaption.textContent = cardHeader.textContent;
+  imageSource.alt = cardHeader.textContent;
+  console.log(this.link);
+}
+
+function cardSelector(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardHeader = cardElement.querySelector(".card__header");
@@ -131,11 +144,8 @@ function getCardElement(cardData) {
   // deleteButton.addEventListener("click", () => {
   //   cardElement.remove();
   // });
-  cardImage.addEventListener("click", () => {
-    openModal(previewImageModal);
-    imageSource.src = cardImage.src;
-    imageCaption.textContent = cardHeader.textContent;
-    imageSource.alt = cardHeader.textContent;
+  cardImage.addEventListener("click", (evt) => {
+    handleImageClick(evt);
   });
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;

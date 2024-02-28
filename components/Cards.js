@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(card, cardSelector) {
+  constructor(card, cardSelector, handleImageClick) {
     this._cardSelector = cardSelector;
     this._name = card.name;
     this._link = card.link;
@@ -47,3 +47,5 @@ export default class Card {
     this._setEventListeners();
   }
 }
+
+// openModal(editProfileModal);
