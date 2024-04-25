@@ -66,13 +66,13 @@ const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
 /* --------------------------------- Classes -------------------------------- */
-let cardData = initialCards.forEach((card) => {
-  new Card(card, cardSelector, handleImageClick);
-});
+// let cardData = initialCards.forEach((card) => {
+//   new Card(card, cardSelector, handleImageClick);
+// });
 
 initialCards.forEach((card) => {
   const cardInstance = new Card(card, "#card-template");
-  cardInstance.getView();
+  cardList.prepend(cardInstance.getView());
 });
 
 modals.forEach((card) => {
@@ -88,7 +88,7 @@ function handleEscapePress(evt) {
   }
 }
 
-function openModal(modal) {
+export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
 }
@@ -120,39 +120,38 @@ function handleAddCardSubmit(evt) {
 }
 
 // added handleImageClick as a function for the cardImage event listener
-// currently bringing up the modal, but image and caption are missing
-function handleImageClick() {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardHeader = cardElement.querySelector(".card__header");
-  openModal(previewImageModal);
-  imageSource.src = cardImage.src;
-  imageCaption.textContent = cardHeader.textContent;
-  imageSource.alt = cardHeader.textContent;
-  console.log(this.link);
+function handleImageClick(card) {
+  // const cardElement = cardTemplate.cloneNode(true);
+  // const cardImage = cardElement.querySelector(".card__image");
+  // const cardHeader = cardElement.querySelector(".card__header");
+  // imageSource.src = card._link; //fix private element
+  // imageCaption.textContent = card._name;
+  // imageSource.alt = card._name;
+  // openModal(previewImageModal);
 }
 
-function cardSelector(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardHeader = cardElement.querySelector(".card__header");
-  // const likeButton = cardElement.querySelector(".card__like-button");
-  // const deleteButton = cardElement.querySelector(".card__delete-button");
-  // likeButton.addEventListener("click", () => {
-  //   likeButton.classList.toggle("card__like-button_active");
-  // });
-  // deleteButton.addEventListener("click", () => {
-  //   cardElement.remove();
-  // });
-  cardImage.addEventListener("click", (evt) => {
-    handleImageClick(evt);
-  });
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardHeader.textContent = cardData.name;
+//need to port this function to Cards.js get view function
+// function cardSelector(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImage = cardElement.querySelector(".card__image");
+//   const cardHeader = cardElement.querySelector(".card__header");
+//   // const likeButton = cardElement.querySelector(".card__like-button");
+//   // const deleteButton = cardElement.querySelector(".card__delete-button");
+//   // likeButton.addEventListener("click", () => {
+//   //   likeButton.classList.toggle("card__like-button_active");
+//   // });
+//   // deleteButton.addEventListener("click", () => {
+//   //   cardElement.remove();
+//   // });
+//   cardImage.addEventListener("click", (evt) => {
+//     handleImageClick(evt);
+//   });
+//   cardImage.src = cardData.link;
+//   cardImage.alt = cardData.name;
+//   cardHeader.textContent = cardData.name;
 
-  return cardElement;
-}
+//   return cardElement;
+// }
 
 /* ----------------------------- Event Listeners ---------------------------- */
 
@@ -167,7 +166,7 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
 
-initialCards.forEach((cardData) => renderCard(cardData, cardList));
+// initialCards.forEach((cardData) => renderCard(cardData, cardList));
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
