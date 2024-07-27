@@ -8,18 +8,18 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
+    this._cardSelector.content
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeButton();
       });
-    this._cardElement
+    this._cardSelector.content
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         _handleDeleteButton();
       });
 
-    this._cardElement
+    this._cardSelector.content
       .querySelector(".card__image")
       .addEventListener("click", () => {
         this._handleImageClick(this);
@@ -27,38 +27,35 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._cardElement
+    this._cardSelector.content
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
 
   _handleDeleteButton() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._cardSelector.remove();
+    this._cardSelector = null;
   }
 
   _handleImageClick() {
-    imageSource.src = this._link; //fix private element
+    imageSource.src = this._link;
     imageCaption.textContent = this._name;
     imageSource.alt = this._name;
-    console.log(this._cardSelector);
     openModal();
   }
 
   getView() {
-    this._cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
+    this._cardSelector.content.querySelector(".card").cloneNode(true);
     this._setEventListeners();
     cardImage.addEventListener("click", (evt) => {
       handleImageClick(evt);
     });
-    cardImage.src = this.link;
-    cardImage.alt = this.name;
-    cardHeader.textContent = this.name;
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
+    cardHeader.textContent = this._name;
+    console.log(cardImage);
 
-    return this._cardElement;
+    return this._cardSelector;
   }
 }
 
@@ -70,4 +67,4 @@ const cardHeader = cardElement.querySelector(".card__header");
 const imageSource = document.querySelector("#modal-image-view");
 const imageCaption = document.querySelector(".modal__image-caption");
 
-// openModal(editProfileModal);
+// openModal(cardSelector);
