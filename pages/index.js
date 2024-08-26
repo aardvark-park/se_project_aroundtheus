@@ -53,7 +53,9 @@ const addCardSubmit = addCardModal.querySelector(".modal__save");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const modals = document.querySelectorAll(".modal");
-const cardSelector = document.getElementById("card-template");
+const cardSelector = document.querySelectorAll(".card");
+
+console.log(cardSelector);
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -72,7 +74,7 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 // });
 
 initialCards.forEach((card) => {
-  const cardInstance = new Card(card, cardSelector);
+  const cardInstance = new Card(card, cardSelector, handleImageClick);
   cardList.prepend(cardInstance.getView());
 });
 
@@ -125,10 +127,10 @@ function handleImageClick(card) {
   // const cardElement = cardTemplate.cloneNode(true);
   // const cardImage = cardElement.querySelector(".card__image");
   // const cardHeader = cardElement.querySelector(".card__header");
-  // imageSource.src = card._link; //fix private element
-  // imageCaption.textContent = card._name;
-  // imageSource.alt = card._name;
-  // openModal(previewImageModal);
+  imageSource.src = card._link; //fix private element
+  imageCaption.textContent = card._name;
+  imageSource.alt = card._name;
+  openModal(previewImageModal);
 }
 
 //need to port this function to Cards.js get view function
