@@ -55,8 +55,6 @@ const cardTemplate =
 const modals = document.querySelectorAll(".modal");
 const cardSelector = document.querySelectorAll(".card");
 
-console.log(cardSelector);
-
 /* -------------------------------- Form Data ------------------------------- */
 
 const profileTitleInput = document.querySelector("#profile-name-input");
@@ -74,7 +72,7 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 // });
 
 initialCards.forEach((card) => {
-  const cardInstance = new Card(card, cardSelector, handleImageClick);
+  const cardInstance = new Card(card, "#card-template", handleImageClick);
   cardList.prepend(cardInstance.getView());
 });
 

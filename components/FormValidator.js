@@ -57,7 +57,7 @@ export default class FormValidator {
   }
 
   testMethod() {
-    console.log(this);
+    console.log("this");
   }
 }
 

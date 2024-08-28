@@ -16,7 +16,7 @@ export default class Card {
         this._handleLikeButton();
       });
     // TODO - use this._cardElement - done
-    this._cardElement.content
+    this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteButton();
@@ -34,7 +34,7 @@ export default class Card {
   }
 
   _handleDeleteButton() {
-    this._cardSelector.remove();
+    this._cardElement.remove();
     this._cardSelector = null;
   }
 
@@ -47,8 +47,9 @@ export default class Card {
 
   getView() {
     // once you pass selector, select the template element
-    this._cardElement = this._cardSelector
-      .querySelector("#card-template")
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
       .cloneNode(true);
 
     this._likeBtn = this._cardElement.querySelector(".card__like-button");
@@ -58,7 +59,6 @@ export default class Card {
     this._cardImage.src = this._link;
     cardImage.alt = this._name;
     this._cardHeader.textContent = this._name;
-    console.log(cardImage);
 
     this._setEventListeners();
 
