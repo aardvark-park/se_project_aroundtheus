@@ -78,7 +78,7 @@ initialCards.forEach((card) => {
 
 modals.forEach((card) => {
   const cardValidation = new Validation(card, cardSelector);
-  cardValidation.testMethod();
+  // cardValidation.testMethod();
 });
 
 /* -------------------------------- Functions ------------------------------- */

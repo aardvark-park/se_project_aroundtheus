@@ -1,7 +1,4 @@
-import { openModal } from "../pages/index.js";
-
 export default class Card {
-  // cardSelector is actually a template element. You should pass a selector instead
   constructor(card, cardSelector, handleImageClick) {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -15,7 +12,7 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleLikeButton();
       });
-    // TODO - use this._cardElement - done
+
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
@@ -38,15 +35,7 @@ export default class Card {
     this._cardSelector = null;
   }
 
-  // _handleImageClick() {
-  //   imageSource.src = this._link;
-  //   imageCaption.textContent = this._name;
-  //   imageSource.alt = this._name;
-  //   openModal();
-  // }
-
   getView() {
-    // once you pass selector, select the template element
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
@@ -73,5 +62,3 @@ const cardImage = cardElement.querySelector(".card__image");
 const cardHeader = cardElement.querySelector(".card__header");
 const imageSource = document.querySelector("#modal-image-view");
 const imageCaption = document.querySelector(".modal__image-caption");
-
-// openModal(cardSelector);

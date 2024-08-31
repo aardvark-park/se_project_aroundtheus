@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(config, formEl) {
+  constructor(formEl, config) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
@@ -7,6 +7,8 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._formEl = formEl;
+    console.log(this._formSelector);
+    console.log(formEl);
   }
 
   _showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
@@ -54,10 +56,6 @@ export default class FormValidator {
         toggleButtonState(this._inputEls, this._submitButton, config);
       });
     });
-  }
-
-  testMethod() {
-    console.log("this");
   }
 }
 
