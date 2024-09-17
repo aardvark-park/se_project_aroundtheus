@@ -66,6 +66,15 @@ const cardUrlInput = document.querySelector("#card-url-input");
 const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
+const settings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save",
+  inactiveButtonClass: "modal__save_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 /* --------------------------------- Classes -------------------------------- */
 // let cardData = initialCards.forEach((card) => {
 //   new Card(card, cardSelector, handleImageClick);
@@ -77,7 +86,7 @@ initialCards.forEach((card) => {
 });
 
 modals.forEach((card) => {
-  const cardValidation = new Validation(card, cardSelector);
+  const cardValidation = new Validation(settings, card);
   // cardValidation.testMethod();
 });
 

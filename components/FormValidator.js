@@ -1,11 +1,11 @@
 export default class FormValidator {
-  constructor(formEl, config) {
-    this._formSelector = config.formSelector;
-    this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonClass;
-    this._inputErrorClass = config.inputErrorClass;
-    this._errorClass = config.errorClass;
+  constructor(settings, formEl) {
+    this._formSelector = settings.formSelector;
+    this._inputSelector = settings.inputSelector;
+    this._submitButtonSelector = settings.submitButtonSelector;
+    this._inactiveButtonClass = settings.inactiveButtonClass;
+    this._inputErrorClass = settings.inputErrorClass;
+    this._errorClass = settings.errorClass;
     this._formEl = formEl;
     console.log(this._formSelector);
     console.log(formEl);
@@ -25,7 +25,7 @@ export default class FormValidator {
     errorMessageEl.classList.remove(errorClass);
   }
 
-  _checkInputValidity(formEl, inputEl, config) {
+  _checkInputValidity(formEl, inputEl, settings) {
     if (!inputEl.validity.valid) {
       return showInputError(formEl, inputEl, options);
     }
@@ -52,10 +52,14 @@ export default class FormValidator {
     this._submitButton = this._formEl.querySelector(this._submitButtonSelector);
     inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (evt) => {
-        checkInputValidity(this._formEl, inputEl, config);
-        toggleButtonState(this._inputEls, this._submitButton, config);
+        checkInputValidity(this._formEl, inputEl, settings);
+        toggleButtonState(this._inputEls, this._submitButton, settings);
       });
     });
+  }
+
+  enableValidation() {
+    console.log("placeholder");
   }
 }
 
@@ -130,12 +134,3 @@ export default class FormValidator {
 //     // resets error messages
 //   });
 // }
-
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__save_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
