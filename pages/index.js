@@ -67,7 +67,7 @@ const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
 const settings = {
-  formSelector: ".modal__form",
+  // formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
   inactiveButtonClass: "modal__save_disabled",
@@ -85,10 +85,13 @@ initialCards.forEach((card) => {
   cardList.prepend(cardInstance.getView());
 });
 
-modals.forEach((card) => {
-  const cardValidation = new Validation(settings, card);
-  // cardValidation.testMethod();
-});
+const editFormValidation = new Validation(settings, editProfileModal);
+const addFormValidation = new Validation(settings, addCardModal);
+editFormValidation.enableValidation();
+addFormValidation.enableValidation();
+
+console.log(editProfileModal);
+console.log(addCardModal);
 
 /* -------------------------------- Functions ------------------------------- */
 function handleEscapePress(evt) {
