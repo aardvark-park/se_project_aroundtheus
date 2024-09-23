@@ -112,7 +112,7 @@ function closeModal(modal) {
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = cardSelector(cardData);
+  const cardElement = cardInstance.getView(cardData);
   wrapper.prepend(cardElement);
 }
 

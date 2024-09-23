@@ -46,7 +46,7 @@ export default class Card {
     this._cardHeader = this._cardElement.querySelector(".card__header");
 
     this._cardImage.src = this._link;
-    cardImage.alt = this._name;
+    this._cardImage.alt = this._name;
     this._cardHeader.textContent = this._name;
 
     this._setEventListeners();
@@ -54,11 +54,3 @@ export default class Card {
     return this._cardElement;
   }
 }
-
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const cardElement = cardTemplate.cloneNode(true);
-const cardImage = cardElement.querySelector(".card__image");
-const cardHeader = cardElement.querySelector(".card__header");
-const imageSource = document.querySelector("#modal-image-view");
-const imageCaption = document.querySelector(".modal__image-caption");
