@@ -90,9 +90,6 @@ const addFormValidation = new Validation(settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
-console.log(editProfileModal);
-console.log(addCardModal);
-
 /* -------------------------------- Functions ------------------------------- */
 function handleEscapePress(evt) {
   if (evt.key === "Escape") {
@@ -111,8 +108,9 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscapePress);
 }
 
-function renderCard(cardData, wrapper) {
-  const cardElement = cardInstance.getView(cardData);
+function renderCard(card, wrapper) {
+  const cardInstance = new Card(card, "#card-template", handleImageClick);
+  const cardElement = cardInstance.getView(card.name, card.link);
   wrapper.prepend(cardElement);
 }
 
@@ -127,6 +125,8 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  console.log(name);
+  console.log(link);
   renderCard({ name, link }, cardList);
   closeModal(addCardModal);
   addCardForm.reset();
