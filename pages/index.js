@@ -67,7 +67,6 @@ const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
 const settings = {
-  // formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
   inactiveButtonClass: "modal__save_disabled",
@@ -76,9 +75,6 @@ const settings = {
 };
 
 /* --------------------------------- Classes -------------------------------- */
-// let cardData = initialCards.forEach((card) => {
-//   new Card(card, cardSelector, handleImageClick);
-// });
 
 initialCards.forEach((card) => {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
@@ -132,39 +128,12 @@ function handleAddCardSubmit(evt) {
   addCardForm.reset();
 }
 
-// added handleImageClick as a function for the cardImage event listener
 function handleImageClick(card) {
-  // const cardElement = cardTemplate.cloneNode(true);
-  // const cardImage = cardElement.querySelector(".card__image");
-  // const cardHeader = cardElement.querySelector(".card__header");
-  imageSource.src = card._link; //fix private element
+  imageSource.src = card._link;
   imageCaption.textContent = card._name;
   imageSource.alt = card._name;
   openModal(previewImageModal);
 }
-
-//need to port this function to Cards.js get view function
-// function cardSelector(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImage = cardElement.querySelector(".card__image");
-//   const cardHeader = cardElement.querySelector(".card__header");
-//   // const likeButton = cardElement.querySelector(".card__like-button");
-//   // const deleteButton = cardElement.querySelector(".card__delete-button");
-//   // likeButton.addEventListener("click", () => {
-//   //   likeButton.classList.toggle("card__like-button_active");
-//   // });
-//   // deleteButton.addEventListener("click", () => {
-//   //   cardElement.remove();
-//   // });
-//   cardImage.addEventListener("click", (evt) => {
-//     handleImageClick(evt);
-//   });
-//   cardImage.src = cardData.link;
-//   cardImage.alt = cardData.name;
-//   cardHeader.textContent = cardData.name;
-
-//   return cardElement;
-// }
 
 /* ----------------------------- Event Listeners ---------------------------- */
 
@@ -178,8 +147,6 @@ editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
-
-// initialCards.forEach((cardData) => renderCard(cardData, cardList));
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
