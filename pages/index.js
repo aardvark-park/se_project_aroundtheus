@@ -1,6 +1,6 @@
 /* --------------------------------- Modules -------------------------------- */
-import Card from "../components/Cards.js";
-import Validation from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 /* --------------------------------- Arrays --------------------------------- */
 
 const initialCards = [
@@ -53,7 +53,6 @@ const addCardSubmit = addCardModal.querySelector(".modal__save");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const modals = document.querySelectorAll(".modal");
-const cardSelector = document.querySelectorAll(".card");
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -81,8 +80,8 @@ initialCards.forEach((card) => {
   cardList.prepend(cardInstance.getView());
 });
 
-const editFormValidation = new Validation(settings, editProfileModal);
-const addFormValidation = new Validation(settings, addCardModal);
+const editFormValidation = new FormValidator(settings, editProfileModal);
+const addFormValidation = new FormValidator(settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
@@ -97,6 +96,8 @@ function handleEscapePress(evt) {
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
+  editFormValidation.resetValidation();
+  addFormValidation.resetValidation();
 }
 
 function closeModal(modal) {
@@ -121,8 +122,6 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  console.log(name);
-  console.log(link);
   renderCard({ name, link }, cardList);
   closeModal(addCardModal);
   addCardForm.reset();

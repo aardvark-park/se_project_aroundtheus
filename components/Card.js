@@ -6,12 +6,12 @@ export default class Card {
     this._link = card.link;
   }
 
+  /* ----------------------------- Private Methods ---------------------------- */
+
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeButton();
-      });
+    this._likeBtn.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
 
     this._cardElement
       .querySelector(".card__delete-button")
@@ -25,15 +25,15 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._likeBtn.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteButton() {
     this._cardElement.remove();
     this._cardSelector = null;
   }
+
+  /* ----------------------------- Public Methods ----------------------------- */
 
   getView() {
     this._cardElement = document

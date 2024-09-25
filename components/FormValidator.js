@@ -6,8 +6,9 @@ export default class FormValidator {
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
     this._formEl = formEl;
-    console.log(formEl);
   }
+
+  /* ----------------------------- Private Methods ---------------------------- */
 
   _showInputError(formEl, inputEl) {
     const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
@@ -56,13 +57,22 @@ export default class FormValidator {
     });
   }
 
+  /* ----------------------------- Public Methods ----------------------------- */
+
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputEls.forEach((inputEl) => {
+      this._hideInputError(this._formEl, inputEl);
+    });
+  }
+
   enableValidation(formEl) {
-    const formEls = [...document.querySelectorAll(this._inputSelector)];
-    formEls.forEach((formEl) => {
+    (formEl) => {
       formEl.addEventListener("submit", (evt) => {
         evt.preventDefault();
       });
-    });
+    };
 
     this._setEventListeners();
   }
