@@ -75,17 +75,17 @@ const settings = {
 
 /* --------------------------------- Classes -------------------------------- */
 
-initialCards.forEach((card) => {
-  const cardInstance = new Card(card, "#card-template", handleImageClick);
-  cardList.prepend(cardInstance.getView());
-});
-
 const editFormValidation = new FormValidator(settings, editProfileModal);
 const addFormValidation = new FormValidator(settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
 /* -------------------------------- Functions ------------------------------- */
+
+initialCards.forEach(({ name, link }) => {
+  renderCard({ name, link }, cardList);
+});
+
 function handleEscapePress(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".modal_opened");
@@ -105,9 +105,14 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscapePress);
 }
 
-function renderCard(card, wrapper) {
+function createCard(card) {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
   const cardElement = cardInstance.getView(card.name, card.link);
+  return cardElement;
+}
+
+function renderCard(card, wrapper) {
+  const cardElement = createCard(card);
   wrapper.prepend(cardElement);
 }
 
@@ -128,9 +133,9 @@ function handleAddCardSubmit(evt) {
 }
 
 function handleImageClick(card) {
-  imageSource.src = card._link;
-  imageCaption.textContent = card._name;
-  imageSource.alt = card._name;
+  imageSource.src = card.link;
+  imageCaption.textContent = card.name;
+  imageSource.alt = card.name;
   openModal(previewImageModal);
 }
 
