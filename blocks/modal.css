@@ -20,6 +20,7 @@
   margin: auto;
   padding: 0;
   width: 430px;
+  height: 330px;
   z-index: 998;
   background-color: white;
   border-radius: 10px;
@@ -100,6 +101,7 @@
 
 .modal__error {
   display: none;
+  overflow: hidden;
   position: relative;
   color: #f00;
   font-family: Inter, Arial, Helvetica, serif;
@@ -108,6 +110,7 @@
   font-weight: 400;
   line-height: normal;
   min-height: 12px;
+  max-height: 15px;
   margin-top: -20px;
   margin-left: 36px;
   margin-bottom: 5px;

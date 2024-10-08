@@ -67,12 +67,10 @@ export default class FormValidator {
     });
   }
 
-  enableValidation(formEl) {
-    (formEl) => {
-      formEl.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-    };
+  enableValidation() {
+    this._formEl.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
 
     this._setEventListeners();
   }

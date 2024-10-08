@@ -96,8 +96,6 @@ function handleEscapePress(evt) {
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
-  editFormValidation.resetValidation();
-  addFormValidation.resetValidation();
 }
 
 function closeModal(modal) {
@@ -107,7 +105,7 @@ function closeModal(modal) {
 
 function createCard(card) {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
-  const cardElement = cardInstance.getView(card.name, card.link);
+  const cardElement = cardInstance.getView();
   return cardElement;
 }
 
