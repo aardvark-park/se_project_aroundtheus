@@ -93,9 +93,17 @@ function handleEscapePress(evt) {
   }
 }
 
+function resetFormValidation() {
+  editFormValidation.resetValidation();
+  addFormValidation.resetValidation();
+}
+
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
+  if (modal === editProfileModal || modal === addCardModal) {
+    resetFormValidation();
+  }
 }
 
 function closeModal(modal) {
