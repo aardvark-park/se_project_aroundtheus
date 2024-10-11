@@ -93,17 +93,25 @@ function handleEscapePress(evt) {
   }
 }
 
-function resetFormValidation() {
+function disableSubmitButton() {
+  addCardSubmit.classList.add("modal__save_disabled");
+}
+
+function openProfileModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscapePress);
   editFormValidation.resetValidation();
-  addFormValidation.resetValidation();
+}
+
+function openAddCardModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscapePress);
+  disableSubmitButton();
 }
 
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
-  if (modal === editProfileModal || modal === addCardModal) {
-    resetFormValidation();
-  }
 }
 
 function closeModal(modal) {
@@ -150,9 +158,9 @@ function handleImageClick(card) {
 edit.addEventListener("click", () => {
   profileTitleInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(editProfileModal);
+  openProfileModal(editProfileModal);
 });
-add.addEventListener("click", () => openModal(addCardModal));
+add.addEventListener("click", () => openAddCardModal(addCardModal));
 editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
