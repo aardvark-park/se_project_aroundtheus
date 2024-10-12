@@ -93,22 +93,6 @@ function handleEscapePress(evt) {
   }
 }
 
-function disableSubmitButton() {
-  addCardSubmit.classList.add("modal__save_disabled");
-}
-
-function openProfileModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscapePress);
-  editFormValidation.resetValidation();
-}
-
-function openAddCardModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscapePress);
-  disableSubmitButton();
-}
-
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapePress);
@@ -158,9 +142,13 @@ function handleImageClick(card) {
 edit.addEventListener("click", () => {
   profileTitleInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openProfileModal(editProfileModal);
+  editFormValidation.resetValidation();
+  openModal(editProfileModal);
 });
-add.addEventListener("click", () => openAddCardModal(addCardModal));
+add.addEventListener("click", () => {
+  openModal(addCardModal);
+  addFormValidation.disableButton();
+});
 editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 

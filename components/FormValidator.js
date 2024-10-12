@@ -59,6 +59,11 @@ export default class FormValidator {
 
   /* ----------------------------- Public Methods ----------------------------- */
 
+  disableButton() {
+    this._submitButton.classList.add("modal__save_disabled");
+    this._submitButton.setAttribute("disabled", "true");
+  }
+
   resetValidation() {
     this._toggleButtonState();
 
