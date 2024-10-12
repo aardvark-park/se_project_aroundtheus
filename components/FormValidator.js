@@ -39,8 +39,7 @@ export default class FormValidator {
       }
     });
     if (foundInvalid) {
-      this._submitButton.classList.add(this._inactiveButtonClass);
-      return (this._submitButton.disabled = true);
+      return this.disableButton();
     }
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
@@ -60,8 +59,8 @@ export default class FormValidator {
   /* ----------------------------- Public Methods ----------------------------- */
 
   disableButton() {
-    this._submitButton.classList.add("modal__save_disabled");
-    this._submitButton.setAttribute("disabled", "true");
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.setAttribute("disabled", true);
   }
 
   resetValidation() {

@@ -128,6 +128,7 @@ function handleAddCardSubmit(evt) {
   renderCard({ name, link }, cardList);
   closeModal(addCardModal);
   addCardForm.reset();
+  addFormValidation.disableButton();
 }
 
 function handleImageClick(card) {
@@ -147,7 +148,6 @@ edit.addEventListener("click", () => {
 });
 add.addEventListener("click", () => {
   openModal(addCardModal);
-  addFormValidation.disableButton();
 });
 editProfileForm.addEventListener("submit", handleProfileSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
