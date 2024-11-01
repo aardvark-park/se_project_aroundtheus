@@ -2,7 +2,7 @@
 
 # Description:
 
-This project utilizes grid and flexbox displays in order to show a user profile with editing and creating new posts buttons.
+This project utilizes grid and flexbox displays in order to show a user profile with editing and creating new post buttons.
 
 This website also utilizes hover functionality for any buttons along with a responsive layout for mobile devices, tablets, and wide screen monitors.
 
