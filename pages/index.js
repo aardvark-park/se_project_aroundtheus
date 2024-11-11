@@ -1,6 +1,7 @@
 /* --------------------------------- Modules -------------------------------- */
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import "./index.css";
 /* --------------------------------- Arrays --------------------------------- */
 
 const initialCards = [
