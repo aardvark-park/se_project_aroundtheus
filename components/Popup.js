@@ -1,11 +1,15 @@
 export default class Popup {
-  constructor(selector) {
-    this._selector = selector;
+  constructor({ popupSelector }) {
+    this._popupElement = document.querySelector(popupSelector);
   }
+
+  /* ---------------------------- Private Methods ---------------------------- */
 
   _handleEscClose() {
     // Logic for closing the popup when esc key is pressed
   }
+
+  /* ----------------------------- Public Methods ----------------------------- */
 
   open() {
     // Opens the popup
