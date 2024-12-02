@@ -1,6 +1,8 @@
 /* --------------------------------- Modules -------------------------------- */
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import "./index.css";
 /* --------------------------------- Arrays --------------------------------- */
 
@@ -81,6 +83,10 @@ const addFormValidation = new FormValidator(settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
+const addCardPopup = new PopupWithForm("#add-modal", () => {});
+
+addCardPopup.setEventListeners();
+
 /* -------------------------------- Functions ------------------------------- */
 
 initialCards.forEach(({ name, link }) => {
@@ -155,13 +161,13 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
 
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (
-      evt.target.classList.contains("modal_opened") ||
-      evt.target.classList.contains("modal__close")
-    ) {
-      closeModal(modal);
-    }
-  });
-});
+// modals.forEach((modal) => {
+//   modal.addEventListener("mousedown", (evt) => {
+//     if (
+//       evt.target.classList.contains("modal_opened") ||
+//       evt.target.classList.contains("modal__close")
+//     ) {
+//       closeModal(modal);
+//     }
+//   });
+// });
