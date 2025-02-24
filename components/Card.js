@@ -36,6 +36,7 @@ export default class Card {
   /* ----------------------------- Public Methods ----------------------------- */
 
   getView() {
+    debugger;
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
