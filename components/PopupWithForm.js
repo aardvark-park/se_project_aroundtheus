@@ -1,13 +1,6 @@
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
-    super({ popupSelector });
-    this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
-  }
-
-  close() {
-    this._popupElement.reset;
-    super.close();
+  constructor({ popupSelector, handleFormSubmit }) {
+    this._popupElement = document.querySelector(popupSelector);
   }
 }

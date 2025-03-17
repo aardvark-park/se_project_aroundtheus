@@ -1,4 +1,4 @@
-export default class UserInfo {
+export default class Popup {
   constructor({ info }) {
     this._name = info.name;
     this._job = info.job;

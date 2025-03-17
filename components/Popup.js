@@ -6,35 +6,21 @@ export default class Popup {
   /* ---------------------------- Private Methods ---------------------------- */
 
   _handleEscClose() {
-    if (evt.key === "Escape") {
-      this._popupElement.close();
-    }
-  }
-
-  _getInputValues() {
-    //grab input values. not sure if this is going to be used at this point
+    // Logic for closing the popup when esc key is pressed
   }
 
   /* ----------------------------- Public Methods ----------------------------- */
 
   open() {
-    this._popupElement.classList.add("modal_opened");
-    document.addEventListener("keydown", this._handleEscClose);
+    // Opens the popup
+    // Should be called in preexisting event handlers in index.js
   }
   close() {
-    this._popupElement.classList.remove("modal_opened");
-    document.removeEventListener("keydown", this._handleEscClose);
-    console.log("popup.js close done");
+    // Closes the popup
   }
 
   setEventListeners() {
     // Adds a click event listener to the close icon of popup
     // Popup should also close when user clicks on shaded area around the form
-    this._popupElement
-      .querySelector(".modal__close")
-      .addEventListener("click", this.close());
-    this._popupElement
-      .querySelector(".modal__mask")
-      .addEventListener("click", this.close());
   }
 }

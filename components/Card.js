@@ -36,17 +36,10 @@ export default class Card {
   /* ----------------------------- Public Methods ----------------------------- */
 
   getView() {
-    console.log(this._cardSelector);
-
-    this._cardElement = this._cardSelector.cloneNode("true");
-
-    // this._cardElement = this._cardSelector
-    //   .querySelector(".card")
-    //   .cloneNode(true);
-    // this._cardElement = document
-    //   .querySelector(this._cardSelector)
-    //   .content.querySelector(".card")
-    //   .cloneNode(true);
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
 
     this._likeBtn = this._cardElement.querySelector(".card__like-button");
     this._cardImage = this._cardElement.querySelector(".card__image");
