@@ -16,6 +16,7 @@ export default class Section {
   addItem(item) {
     // Takes DOM element and adds it to the container
     // Should be called when adding a single card to the DOM
+    console.log(this._selector);
     this._selector.append(element);
   }
 }

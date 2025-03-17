@@ -31,4 +31,5 @@ CardSection.renderItems(constants.initialCards);
 /* --------------------------------- TO DO: --------------------------------- */
 
 //get Section class functioning - functions aren't working
+//renderer not working atm - jk, it's section 'selector' parameter
 //start on other classes
