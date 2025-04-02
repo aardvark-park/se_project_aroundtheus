@@ -1,6 +1,8 @@
 /* --------------------------------- Modules -------------------------------- */
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import "./index.css";
 /* --------------------------------- Arrays --------------------------------- */
 
@@ -81,18 +83,21 @@ const addFormValidation = new FormValidator(settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
+const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
+  evt.preventDefault();
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({ name, link }, cardList);
+  Popup.close(addCardModal);
+  addCardForm.reset();
+  addFormValidation.disableButton();
+});
+
 /* -------------------------------- Functions ------------------------------- */
 
 initialCards.forEach(({ name, link }) => {
   renderCard({ name, link }, cardList);
 });
-
-function handleEscapePress(evt) {
-  if (evt.key === "Escape") {
-    const popup = document.querySelector(".modal_opened");
-    closeModal(popup);
-  }
-}
 
 export function openModal(modal) {
   modal.classList.add("modal_opened");
