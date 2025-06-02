@@ -6,7 +6,13 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  _getInputValues() {
+    //collects data from all input fields and returns it as an object
+    //data from this function should be passed to the submission handler as an argument
+  }
+
   close() {
+    console.log("PopupWithForm.js close()");
     this._popupForm.reset();
     super.close();
   }

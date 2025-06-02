@@ -7,6 +7,7 @@ export default class PopupWithImage extends Popup {
   }
 
   close() {
+    console.log("PopupWithImage.js close()");
     this._popupElement.reset;
     super.close();
   }
