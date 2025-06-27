@@ -103,8 +103,8 @@ const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   addFormValidation.disableButton();
 });
 
-newCardPopup.open();
-newCardPopup.close();
+// newCardPopup.open();
+// newCardPopup.close();
 
 /* -------------------------------- Functions ------------------------------- */
 
@@ -112,16 +112,16 @@ initialCards.forEach(({ name, link }) => {
   renderCard({ name, link }, cardList);
 });
 
-export function openModal(modal) {
-  console.log(modal);
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscapePress);
-}
+// export function openModal(modal) {
+//   console.log(modal);
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscapePress);
+// }
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscapePress);
-}
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
+//   document.removeEventListener("keydown", handleEscapePress);
+// }
 
 function createCard(card) {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
@@ -180,7 +180,10 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal_opened") ||
       evt.target.classList.contains("modal__close")
     ) {
-      closeModal(modal);
+      newCardPopup.close(modal);
     }
   });
 });
+
+//TODO:
+//Popup.close() function not working properly
