@@ -3,6 +3,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import "./index.css";
 /* --------------------------------- Arrays --------------------------------- */
 
@@ -85,7 +86,6 @@ addFormValidation.enableValidation();
 
 const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   evt.preventDefault();
-  console.log("Class instantiation new PopupWithForm - const newCardPopup");
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
@@ -96,11 +96,12 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
 
 const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
-  console.log("Class instantiation new PopupWithForm - const newCardPopup");
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
   addFormValidation.disableButton();
+});
+
+const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
+  evt.preventDefault();
 });
 
 // newCardPopup.open();
@@ -111,17 +112,6 @@ const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
 initialCards.forEach(({ name, link }) => {
   renderCard({ name, link }, cardList);
 });
-
-// export function openModal(modal) {
-//   console.log(modal);
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", handleEscapePress);
-// }
-
-// function closeModal(modal) {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keydown", handleEscapePress);
-// }
 
 function createCard(card) {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
@@ -146,7 +136,7 @@ function handleAddCardSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
-  closeModal(addCardModal);
+  newCardPopup.close(addCardModal);
   addCardForm.reset();
   addFormValidation.disableButton();
 }
@@ -155,7 +145,7 @@ function handleImageClick(card) {
   imageSource.src = card.link;
   imageCaption.textContent = card.name;
   imageSource.alt = card.name;
-  openModal(previewImageModal);
+  newImagePopup.open(previewImageModal);
 }
 
 /* ----------------------------- Event Listeners ---------------------------- */
@@ -181,9 +171,12 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal__close")
     ) {
       newCardPopup.close(modal);
+      newEditPopup.close(modal);
+      newImagePopup.close(modal);
     }
   });
 });
 
 //TODO:
-//Popup.close() function not working properly
+// Escape key press to close popups is not working, getting an error that says "Scripts may close only the windows that were opened by them."
+//_getInputValues in PopupWithForm.js

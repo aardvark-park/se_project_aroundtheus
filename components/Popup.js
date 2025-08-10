@@ -19,13 +19,13 @@ export default class Popup {
   open() {
     // Opens the popup
     // Should be called in preexisting event handlers in index.js
-    console.log("Popup.js open()");
+    console.log(this._popupElement);
     this._popupElement.classList.add("modal_opened");
     this.setEventListeners();
   }
-  close(popup) {
-    console.log("Popup.js close()");
-    popup.classList.remove("modal_opened");
+  close() {
+    console.log(this._popupElement);
+    this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
