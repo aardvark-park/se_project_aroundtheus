@@ -179,4 +179,5 @@ modals.forEach((modal) => {
 
 //TODO:
 // Escape key press to close popups is not working, getting an error that says "Scripts may close only the windows that were opened by them."
+// thinking the modals need opened and closed by the same module
 //_getInputValues in PopupWithForm.js
