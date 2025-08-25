@@ -124,28 +124,28 @@ function renderCard(card, wrapper) {
   wrapper.prepend(cardElement);
 }
 
-function handleProfileSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(editProfileModal);
-}
+// function handleProfileSubmit(evt) {
+//   evt.preventDefault();
+//   profileName.textContent = profileTitleInput.value;
+//   profileDescription.textContent = profileDescriptionInput.value;
+//   closeModal(editProfileModal);
+// }
 
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardList);
-  newCardPopup.close(addCardModal);
-  addCardForm.reset();
-  addFormValidation.disableButton();
-}
+// function handleAddCardSubmit(evt) {
+//   evt.preventDefault();
+//   const name = cardTitleInput.value;
+//   const link = cardUrlInput.value;
+//   renderCard({ name, link }, cardList);
+//   newCardPopup.close(addCardModal);
+//   addCardForm.reset();
+//   addFormValidation.disableButton();
+// }
 
 function handleImageClick(card) {
   imageSource.src = card.link;
   imageCaption.textContent = card.name;
   imageSource.alt = card.name;
-  newImagePopup.open(previewImageModal);
+  newImagePopup.openPopup(previewImageModal);
 }
 
 /* ----------------------------- Event Listeners ---------------------------- */
@@ -154,13 +154,13 @@ edit.addEventListener("click", () => {
   profileTitleInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   editFormValidation.resetValidation();
-  newEditPopup.open(editProfileModal);
+  newEditPopup.openPopup(editProfileModal);
 });
 add.addEventListener("click", () => {
-  newCardPopup.open(addCardModal);
+  newCardPopup.openPopup(addCardModal);
 });
-editProfileForm.addEventListener("submit", handleProfileSubmit);
-addCardForm.addEventListener("submit", handleAddCardSubmit);
+editProfileForm.addEventListener("submit", PopupWithForm.handleProfileSubmit);
+addCardForm.addEventListener("submit", PopupWithForm.handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
 
@@ -170,14 +170,13 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal_opened") ||
       evt.target.classList.contains("modal__close")
     ) {
-      newCardPopup.close(modal);
-      newEditPopup.close(modal);
-      newImagePopup.close(modal);
+      newCardPopup.closePopup(modal);
+      newEditPopup.closePopup(modal);
+      newImagePopup.closePopup(modal);
     }
   });
 });
 
 //TODO:
-// Escape key press to close popups is not working, getting an error that says "Scripts may close only the windows that were opened by them."
-// thinking the modals need opened and closed by the same module
+// _handleEscapePress for forms still not working, saying that closePopup function is not defined
 //_getInputValues in PopupWithForm.js

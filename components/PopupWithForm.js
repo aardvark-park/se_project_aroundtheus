@@ -22,7 +22,7 @@ export default class PopupWithForm extends Popup {
     this._getInputValues();
     profileName.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
-    closeModal(editProfileModal);
+    closePopup(editProfileModal);
   }
 
   handleAddCardSubmit(evt) {
@@ -41,6 +41,6 @@ export default class PopupWithForm extends Popup {
   }
   close() {
     this._popupForm.reset();
-    super.close();
+    super.closePopup();
   }
 }
