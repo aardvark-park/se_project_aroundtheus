@@ -170,8 +170,8 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal_opened") ||
       evt.target.classList.contains("modal__close")
     ) {
-      newCardPopup.closePopup(modal);
-      newEditPopup.closePopup(modal);
+      newCardPopup.closePopupWithForm(modal);
+      newEditPopup.closePopupWithForm(modal);
       newImagePopup.closePopup(modal);
     }
   });

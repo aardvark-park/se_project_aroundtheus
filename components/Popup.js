@@ -8,7 +8,7 @@ export default class Popup {
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       const popup = document.querySelector(".modal_opened");
-      closePopup(popup);
+      this.closePopup(popup);
       console.log("Popup.js _handleEscClose()");
       console.log(popup);
     }
@@ -24,14 +24,20 @@ export default class Popup {
     this.setEventListeners();
   }
   closePopup(popup) {
+    //closes the popup
+    console.log("closed");
     console.log(this._popupElement);
     popup.classList.remove("modal_opened");
-    document.removeEventListener("keydown", this._handleEscClose);
+    document.removeEventListener("keydown", (evt) => {
+      this._handleEscClose(evt);
+    });
   }
 
   setEventListeners() {
     console.log("Popup.js setEventListeners()");
-    document.addEventListener("keydown", this._handleEscClose);
+    document.addEventListener("keydown", (evt) => {
+      this._handleEscClose(evt);
+    });
 
     // Adds a click event listener to the close icon of popup
     // Popup should also close when user clicks on shaded area around the form,
