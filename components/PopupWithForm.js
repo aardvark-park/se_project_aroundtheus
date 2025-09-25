@@ -36,9 +36,9 @@ export default class PopupWithForm extends Popup {
     addFormValidation.disableButton();
   }
 
-  // setEventListeners() {
-  //   super.setEventListeners();
-  // }
+  setEventListeners() {
+    super.setEventListeners();
+  }
   closePopupWithForm() {
     this._popupForm.reset();
     super.closePopup();

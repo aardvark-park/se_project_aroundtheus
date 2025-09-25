@@ -178,5 +178,6 @@ modals.forEach((modal) => {
 });
 
 //TODO:
-// _handleEscapePress for forms still not working, saying that closePopup function is not defined
+// _handleEscapePress for forms is working, but seeing an error in the console after using
+// other methods of closing the popups aren't working (eg. clicking the x, clicking the background)
 //_getInputValues in PopupWithForm.js
