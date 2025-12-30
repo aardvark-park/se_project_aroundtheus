@@ -23,8 +23,9 @@ export default class Popup {
     this._popupElement.classList.add("modal_opened");
     this.setEventListeners();
   }
-  closePopup(popup) {
+  closePopup() {
     //closes the popup
+    const popup = document.querySelector(".modal_opened");
     console.log("closed");
     console.log(this._popupElement);
     popup.classList.remove("modal_opened");

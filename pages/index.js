@@ -89,7 +89,7 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
-  Popup.close(addCardModal);
+  //Popup.close(addCardModal);
   addCardForm.reset();
   addFormValidation.disableButton();
 });
@@ -170,14 +170,13 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal_opened") ||
       evt.target.classList.contains("modal__close")
     ) {
-      newCardPopup.closePopupWithForm(modal);
-      newEditPopup.closePopupWithForm(modal);
-      newImagePopup.closePopup(modal);
+      newCardPopup.closePopupWithForm();
+      newEditPopup.closePopupWithForm();
+      newImagePopup.closePopup();
     }
   });
 });
 
 //TODO:
-// _handleEscapePress for forms is working, but seeing an error in the console after using
-// other methods of closing the popups aren't working (eg. clicking the x, clicking the background)
+//uncaught typeerror occuring when closing popups
 //_getInputValues in PopupWithForm.js
