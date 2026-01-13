@@ -145,12 +145,11 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal__close")
     ) {
       newCardPopup.closePopupWithForm();
-      newEditPopup.closePopupWithForm();
-      newImagePopup.closePopup();
+      //newEditPopup.closePopupWithForm();
+      //newImagePopup.closePopup();
     }
   });
 });
 
 //TODO:
-//uncaught typeerror occuring when closing popups
 //_getInputValues in PopupWithForm.js
