@@ -63,15 +63,15 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
-  //Popup.close(addCardModal);
+  console.log("newCardPopup");
   addCardForm.reset();
   addFormValidation.disableButton();
 });
 
 const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
+  console.log("newEditPopup");
   renderCard({ name, link }, cardList);
-  addFormValidation.disableButton();
 });
 
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
@@ -133,7 +133,7 @@ edit.addEventListener("click", () => {
 add.addEventListener("click", () => {
   newCardPopup.openPopup(addCardModal);
 });
-editProfileForm.addEventListener("submit", PopupWithForm.handleProfileSubmit);
+profileEditSubmit.addEventListener("submit", console.log("SUBMIT"));
 addCardForm.addEventListener("submit", PopupWithForm.handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
@@ -153,3 +153,4 @@ modals.forEach((modal) => {
 
 //TODO:
 //_getInputValues in PopupWithForm.js
+// form submitions, form validator (currently referencing a settings.js file that does not exist)
