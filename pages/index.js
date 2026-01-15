@@ -43,18 +43,13 @@ const cardUrlInput = document.querySelector("#card-url-input");
 const addCardForm = document.querySelector("#add-card-form");
 const editProfileForm = document.querySelector("#edit-profile-form");
 
-const settings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__save_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
 /* --------------------------------- Classes -------------------------------- */
 
-const editFormValidation = new FormValidator(settings, editProfileModal);
-const addFormValidation = new FormValidator(settings, addCardModal);
+const editFormValidation = new FormValidator(
+  Constants.settings,
+  editProfileModal
+);
+const addFormValidation = new FormValidator(Constants.settings, addCardModal);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
@@ -153,4 +148,4 @@ modals.forEach((modal) => {
 
 //TODO:
 //_getInputValues in PopupWithForm.js
-// form submitions, form validator (currently referencing a settings.js file that does not exist)
+// form submitions, form validator

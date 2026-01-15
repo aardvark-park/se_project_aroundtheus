@@ -57,16 +57,16 @@ export const modals = document.querySelectorAll(".modal");
 
 /* -------------------------------- Form Data ------------------------------- */
 
-const profileTitleInput = document.querySelector("#profile-name-input");
-const profileDescriptionInput = document.querySelector(
+export const profileTitleInput = document.querySelector("#profile-name-input");
+export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const cardTitleInput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#card-url-input");
-const addCardForm = document.querySelector("#add-card-form");
-const editProfileForm = document.querySelector("#edit-profile-form");
+export const cardTitleInput = document.querySelector("#card-title-input");
+export const cardUrlInput = document.querySelector("#card-url-input");
+export const addCardForm = document.querySelector("#add-card-form");
+export const editProfileForm = document.querySelector("#edit-profile-form");
 
-const settings = {
+export const settings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
   inactiveButtonClass: "modal__save_disabled",
