@@ -73,9 +73,6 @@ const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
   evt.preventDefault();
 });
 
-// newCardPopup.open();
-// newCardPopup.close();
-
 /* -------------------------------- Functions ------------------------------- */
 
 Constants.initialCards.forEach(({ name, link }) => {
@@ -128,8 +125,11 @@ edit.addEventListener("click", () => {
 add.addEventListener("click", () => {
   newCardPopup.openPopup(addCardModal);
 });
-profileEditSubmit.addEventListener("submit", console.log("SUBMIT"));
-addCardForm.addEventListener("submit", PopupWithForm.handleAddCardSubmit);
+// Constants.profileEditSubmit.addEventListener(
+//   "submit",
+//   newEditPopup.handleProfileSubmit
+// );
+// addCardForm.addEventListener("submit", PopupWithForm.handleAddCardSubmit);
 
 /* ---------------------------------- Loops --------------------------------- */
 
@@ -140,8 +140,6 @@ modals.forEach((modal) => {
       evt.target.classList.contains("modal__close")
     ) {
       newCardPopup.closePopupWithForm();
-      //newEditPopup.closePopupWithForm();
-      //newImagePopup.closePopup();
     }
   });
 });

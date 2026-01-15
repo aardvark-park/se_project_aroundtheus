@@ -32,7 +32,6 @@ export default class Popup {
 
   setEventListeners() {
     document.addEventListener("keydown", this._boundHandleEscClose);
-    document.addEventListener("submit", console.log("submit"));
 
     // Adds a click event listener to the close icon of popup
     // Popup should also close when user clicks on shaded area around the form,

@@ -1,3 +1,4 @@
+import * as Constants from "./Constants.js";
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
@@ -46,6 +47,11 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
+    Constants.profileEditSubmit.addEventListener(
+      "submit",
+      this.handleProfileSubmit
+    );
+    console.log(Constants.addCardSubmit);
   }
   closePopupWithForm() {
     this._popupForm.reset();
