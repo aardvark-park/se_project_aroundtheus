@@ -35,7 +35,7 @@ export default class PopupWithForm extends Popup {
 
   handleAddCardSubmit(evt) {
     evt.preventDefault();
-    console.log(AddCardSubmit);
+    console.log("AddCardSubmit");
     this._getInputValues();
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
@@ -47,11 +47,11 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    Constants.profileEditSubmit.addEventListener(
+    Constants.editProfileForm.addEventListener(
       "submit",
       this.handleProfileSubmit
     );
-    console.log(Constants.addCardSubmit);
+    Constants.addCardForm.addEventListener("submit", this.handleAddCardSubmit);
   }
   closePopupWithForm() {
     this._popupForm.reset();

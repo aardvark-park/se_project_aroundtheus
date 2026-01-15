@@ -146,4 +146,4 @@ modals.forEach((modal) => {
 
 //TODO:
 //_getInputValues in PopupWithForm.js
-// form submitions, form validator
+// form submission function
