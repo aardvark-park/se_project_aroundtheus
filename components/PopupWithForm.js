@@ -7,27 +7,27 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  _getInputValues() {
+  _getInputValues(evt) {
     //collects data from all input fields and returns it as an object
     //data from this function should be passed to the submission handler as an argument
-    const popupForm = document.querySelectorAll(".modal__form");
-    const submit = document.querySelectorAll(".modal__save");
-    const profileTitleInput = document.querySelector("#profile-name-input");
-    const profileDescriptionInput = document.querySelector(
-      "#profile-description-input"
-    );
-    const cardTitleInput = document.querySelector("#card-title-input");
-    const cardUrlInput = document.querySelector("#card-url-input");
-    const formData = new FormData(popupForm, submit);
-    const formDataObj = Object.fromEntries(formData.entries);
-
-    return formDataObj;
+    evt.preventDefault();
+    const editProfileForm = document.querySelector("#edit-profile-form");
+    // const profileTitleInput = document.querySelector("#profile-name-input");
+    // const profileDescriptionInput = document.querySelector(
+    //   "#profile-description-input"
+    // );
+    // const cardTitleInput = document.querySelector("#card-title-input");
+    // const cardUrlInput = document.querySelector("#card-url-input");
+    const formData = new FormData(evt.target);
+    // const formDataObj = Object.fromEntries(formData.entries);
+    console.log(formData);
+    // return formDataObj;
   }
 
   handleProfileSubmit(evt) {
     evt.preventDefault();
     console.log("ProfileSubmit");
-    this._getInputValues();
+    this._getInputValues(evt);
     profileName.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closePopup(editProfileModal);
@@ -36,6 +36,7 @@ export default class PopupWithForm extends Popup {
   handleAddCardSubmit(evt) {
     evt.preventDefault();
     console.log("AddCardSubmit");
+    console.log(this._getInputValues);
     this._getInputValues();
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
@@ -47,10 +48,9 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    Constants.editProfileForm.addEventListener(
-      "submit",
-      this.handleProfileSubmit
-    );
+    Constants.editProfileForm.addEventListener("submit", (evt) => {
+      this.handleProfileSubmit(evt);
+    });
     Constants.addCardForm.addEventListener("submit", this.handleAddCardSubmit);
   }
   closePopupWithForm() {
