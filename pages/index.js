@@ -145,5 +145,6 @@ modals.forEach((modal) => {
 });
 
 //TODO:
-//_getInputValues in PopupWithForm.js
-// form submission function
+//_getInputValues in PopupWithForm.js, currently we're getting all of our inputs from the Constants.js references in the handleProfileSubmit function
+// add card form submission function
+// getting an error in the console after editing the profile a few times

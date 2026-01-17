@@ -31,7 +31,7 @@ export default class PopupWithForm extends Popup {
     Constants.profileName.textContent = Constants.profileTitleInput.value;
     Constants.profileDescription.textContent =
       Constants.profileDescriptionInput.value;
-    this.closePopupWithForm(Constants.editProfileModal);
+    this.closePopupWithForm();
   }
 
   handleAddCardSubmit(evt) {
