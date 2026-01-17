@@ -28,9 +28,10 @@ export default class PopupWithForm extends Popup {
     evt.preventDefault();
     console.log("ProfileSubmit");
     this._getInputValues(evt);
-    profileName.textContent = profileTitleInput.value;
-    profileDescription.textContent = profileDescriptionInput.value;
-    closePopup(editProfileModal);
+    Constants.profileName.textContent = Constants.profileTitleInput.value;
+    Constants.profileDescription.textContent =
+      Constants.profileDescriptionInput.value;
+    this.closePopupWithForm(Constants.editProfileModal);
   }
 
   handleAddCardSubmit(evt) {
@@ -51,10 +52,11 @@ export default class PopupWithForm extends Popup {
     Constants.editProfileForm.addEventListener("submit", (evt) => {
       this.handleProfileSubmit(evt);
     });
-    Constants.addCardForm.addEventListener("submit", this.handleAddCardSubmit);
+    Constants.addCardForm.addEventListener("submit", (evt) => {
+      this.handleAddCardSubmit(evt);
+    });
   }
   closePopupWithForm() {
-    this._popupForm.reset();
     super.closePopup();
   }
 }
