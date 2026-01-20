@@ -1,3 +1,4 @@
+import * as Constants from "./Constants.js";
 export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
@@ -22,16 +23,26 @@ export default class Popup {
     // Should be called in preexisting event handlers in index.js
     this._popupElement.classList.add("modal_opened");
     this.setEventListeners();
+    console.log("openzeePopup");
   }
   closePopup() {
     //closes the popup
     const popup = document.querySelector(".modal_opened");
-    console.log(popup);
     popup.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._boundHandleEscClose);
   }
 
   setEventListeners() {
+    Constants.modals.forEach((modal) => {
+      modal.addEventListener("mousedown", (evt) => {
+        if (
+          evt.target.classList.contains("modal_opened") ||
+          evt.target.classList.contains("modal__close")
+        ) {
+          this.closePopup();
+        }
+      });
+    });
     document.addEventListener("keydown", this._boundHandleEscClose);
 
     // Adds a click event listener to the close icon of popup

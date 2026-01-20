@@ -26,7 +26,6 @@ export default class PopupWithForm extends Popup {
 
   handleProfileSubmit(evt) {
     evt.preventDefault();
-    console.log("ProfileSubmit");
     this._getInputValues(evt);
     Constants.profileName.textContent = Constants.profileTitleInput.value;
     Constants.profileDescription.textContent =

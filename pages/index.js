@@ -36,7 +36,7 @@ const modals = document.querySelectorAll(".modal");
 
 const profileTitleInput = document.querySelector("#profile-name-input");
 const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-url-input");
@@ -47,7 +47,7 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 
 const editFormValidation = new FormValidator(
   Constants.settings,
-  editProfileModal
+  editProfileModal,
 );
 const addFormValidation = new FormValidator(Constants.settings, addCardModal);
 editFormValidation.enableValidation();
@@ -124,24 +124,6 @@ edit.addEventListener("click", () => {
 });
 add.addEventListener("click", () => {
   newCardPopup.openPopup(addCardModal);
-});
-// Constants.profileEditSubmit.addEventListener(
-//   "submit",
-//   newEditPopup.handleProfileSubmit
-// );
-// addCardForm.addEventListener("submit", PopupWithForm.handleAddCardSubmit);
-
-/* ---------------------------------- Loops --------------------------------- */
-
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (
-      evt.target.classList.contains("modal_opened") ||
-      evt.target.classList.contains("modal__close")
-    ) {
-      newCardPopup.closePopupWithForm();
-    }
-  });
 });
 
 //TODO:
