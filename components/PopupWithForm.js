@@ -47,6 +47,7 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
+    console.log("PopupWithForm setEventListeners");
     super.setEventListeners();
     Constants.editProfileForm.addEventListener("submit", (evt) => {
       this.handleProfileSubmit(evt);

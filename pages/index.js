@@ -58,20 +58,20 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardList);
-  console.log("newCardPopup");
   addCardForm.reset();
   addFormValidation.disableButton();
 });
 
 const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
-  console.log("newEditPopup");
   renderCard({ name, link }, cardList);
 });
 
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
   evt.preventDefault();
 });
+
+newCardPopup.setEventListeners();
 
 /* -------------------------------- Functions ------------------------------- */
 
@@ -129,4 +129,3 @@ add.addEventListener("click", () => {
 //TODO:
 //_getInputValues in PopupWithForm.js, currently we're getting all of our inputs from the Constants.js references in the handleProfileSubmit function
 // add card form submission function
-// getting an error in the console after editing the profile a few times

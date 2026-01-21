@@ -11,7 +11,6 @@ export default class Popup {
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      const popup = document.querySelector(".modal_opened");
       this.closePopup();
     }
   }
@@ -22,14 +21,11 @@ export default class Popup {
     // Opens the popup
     // Should be called in preexisting event handlers in index.js
     this._popupElement.classList.add("modal_opened");
-    this.setEventListeners();
-    console.log("openzeePopup");
   }
   closePopup() {
     //closes the popup
     const popup = document.querySelector(".modal_opened");
     popup.classList.remove("modal_opened");
-    document.removeEventListener("keydown", this._boundHandleEscClose);
   }
 
   setEventListeners() {

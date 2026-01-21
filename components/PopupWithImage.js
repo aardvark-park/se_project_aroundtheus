@@ -6,6 +6,10 @@ export default class PopupWithImage extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  setEventListeners() {
+    super.setEventListeners();
+  }
+
   close() {
     console.log("PopupWithImage.js close()");
     this._popupElement.reset;
