@@ -9,27 +9,17 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues(evt) {
     //collects data from all input fields and returns it as an object
-    //data from this function should be passed to the submission handler as an argument
     evt.preventDefault();
     const editProfileForm = document.querySelector("#edit-profile-form");
-    // const profileTitleInput = document.querySelector("#profile-name-input");
-    // const profileDescriptionInput = document.querySelector(
-    //   "#profile-description-input"
-    // );
-    // const cardTitleInput = document.querySelector("#card-title-input");
-    // const cardUrlInput = document.querySelector("#card-url-input");
-    const formData = new FormData(evt.target);
-    // const formDataObj = Object.fromEntries(formData.entries);
-    console.log(formData);
-    // return formDataObj;
+    this.formData = new FormData(evt.target);
+    this.formDataObj = Object.fromEntries(this.formData);
   }
 
   handleProfileSubmit(evt) {
     evt.preventDefault();
     this._getInputValues(evt);
-    Constants.profileName.textContent = Constants.profileTitleInput.value;
-    Constants.profileDescription.textContent =
-      Constants.profileDescriptionInput.value;
+    Constants.profileName.textContent = this.formDataObj.name;
+    Constants.profileDescription.textContent = this.formDataObj.description;
     this.closePopupWithForm();
   }
 
