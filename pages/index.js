@@ -6,31 +6,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import * as Constants from "../components/Constants.js";
 import "./index.css";
-/* --------------------------------- Arrays --------------------------------- */
-
-/* -------------------------------- Elements -------------------------------- */
-
-const body = document.querySelector(".page");
-const edit = document.querySelector(".profile__edit-button");
-const add = document.querySelector(".profile__add-button");
-const card = document.querySelector(".card");
-const editProfileModal = document.querySelector("#edit-modal");
-const addCardModal = document.querySelector("#add-modal");
-const editProfileCloseModal = editProfileModal.querySelector(".modal__close");
-const addCardCloseModal = addCardModal.querySelector(".modal__close");
-const profileName = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const previewImageModal = document.querySelector("#image-modal");
-const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
-const imageSource = document.querySelector("#modal-image-view");
-const imageCaption = document.querySelector(".modal__image-caption");
-const closeButtons = document.querySelectorAll(".modal__close");
-const cardList = document.querySelector(".cards__list");
-const profileEditSubmit = editProfileModal.querySelector(".modal__save");
-const addCardSubmit = addCardModal.querySelector(".modal__save");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const modals = document.querySelectorAll(".modal");
 
 /* -------------------------------- Form Data ------------------------------- */
 
@@ -47,9 +22,12 @@ const editProfileForm = document.querySelector("#edit-profile-form");
 
 const editFormValidation = new FormValidator(
   Constants.settings,
-  editProfileModal,
+  Constants.editProfileModal,
 );
-const addFormValidation = new FormValidator(Constants.settings, addCardModal);
+const addFormValidation = new FormValidator(
+  Constants.settings,
+  Constants.addCardModal,
+);
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
@@ -57,14 +35,14 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCard({ name, link }, cardList);
+  renderCard({ name, link }, Constants.cardList);
   addCardForm.reset();
   addFormValidation.disableButton();
 });
 
 const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
-  renderCard({ name, link }, cardList);
+  renderCard({ name, link }, Constants.cardList);
 });
 
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
@@ -76,7 +54,7 @@ newCardPopup.setEventListeners();
 /* -------------------------------- Functions ------------------------------- */
 
 Constants.initialCards.forEach(({ name, link }) => {
-  renderCard({ name, link }, cardList);
+  renderCard({ name, link }, Constants.cardList);
 });
 
 function createCard(card) {
@@ -90,42 +68,24 @@ function renderCard(card, wrapper) {
   wrapper.prepend(cardElement);
 }
 
-// function handleProfileSubmit(evt) {
-//   evt.preventDefault();
-//   profileName.textContent = profileTitleInput.value;
-//   profileDescription.textContent = profileDescriptionInput.value;
-//   closeModal(editProfileModal);
-// }
-
-// function handleAddCardSubmit(evt) {
-//   evt.preventDefault();
-//   const name = cardTitleInput.value;
-//   const link = cardUrlInput.value;
-//   renderCard({ name, link }, cardList);
-//   newCardPopup.close(addCardModal);
-//   addCardForm.reset();
-//   addFormValidation.disableButton();
-// }
-
 function handleImageClick(card) {
-  imageSource.src = card.link;
-  imageCaption.textContent = card.name;
-  imageSource.alt = card.name;
-  newImagePopup.openPopup(previewImageModal);
+  Constants.imageSource.src = card.link;
+  Constants.imageCaption.textContent = card.name;
+  Constants.imageSource.alt = card.name;
+  newImagePopup.openPopup(Constants.previewImageModal);
 }
 
 /* ----------------------------- Event Listeners ---------------------------- */
 
-edit.addEventListener("click", () => {
-  profileTitleInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+Constants.edit.addEventListener("click", () => {
+  profileTitleInput.value = Constants.profileName.textContent;
+  profileDescriptionInput.value = Constants.profileDescription.textContent;
   editFormValidation.resetValidation();
-  newEditPopup.openPopup(editProfileModal);
+  newEditPopup.openPopup(Constants.editProfileModal);
 });
-add.addEventListener("click", () => {
-  newCardPopup.openPopup(addCardModal);
+Constants.add.addEventListener("click", () => {
+  newCardPopup.openPopup(Constants.addCardModal);
 });
 
 //TODO:
-//_getInputValues in PopupWithForm.js, currently we're getting all of our inputs from the Constants.js references in the handleProfileSubmit function
-// add card form submission function
+// add card form submission function, evt isn't being passed properly

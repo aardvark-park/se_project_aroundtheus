@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
   _getInputValues(evt) {
     //collects data from all input fields and returns it as an object
     evt.preventDefault();
-    const editProfileForm = document.querySelector("#edit-profile-form");
     this.formData = new FormData(evt.target);
     this.formDataObj = Object.fromEntries(this.formData);
   }
@@ -25,24 +24,22 @@ export default class PopupWithForm extends Popup {
 
   handleAddCardSubmit(evt) {
     evt.preventDefault();
-    console.log("AddCardSubmit");
-    console.log(this._getInputValues);
     this._getInputValues();
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
     renderCard({ name, link }, cardList);
     newCardPopup.close(addCardModal);
-    addCardForm.reset();
+    Constants.addCardForm.reset();
     addFormValidation.disableButton();
   }
 
   setEventListeners() {
-    console.log("PopupWithForm setEventListeners");
     super.setEventListeners();
     Constants.editProfileForm.addEventListener("submit", (evt) => {
       this.handleProfileSubmit(evt);
     });
     Constants.addCardForm.addEventListener("submit", (evt) => {
+      console.log(evt);
       this.handleAddCardSubmit(evt);
     });
   }
