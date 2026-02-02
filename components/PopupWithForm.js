@@ -24,9 +24,9 @@ export default class PopupWithForm extends Popup {
 
   handleAddCardSubmit(evt) {
     evt.preventDefault();
-    this._getInputValues();
-    const name = cardTitleInput.value;
-    const link = cardUrlInput.value;
+    this._getInputValues(evt);
+    const name = Constants.cardTitleInput.value;
+    const link = Constants.cardUrlInput.value;
     renderCard({ name, link }, cardList);
     newCardPopup.close(addCardModal);
     Constants.addCardForm.reset();
