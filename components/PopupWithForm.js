@@ -22,17 +22,6 @@ export default class PopupWithForm extends Popup {
     this.closePopupWithForm();
   }
 
-  // handleAddCardSubmit(evt) {
-  //   evt.preventDefault();
-  //   this._getInputValues(evt);
-  //   const name = Constants.cardTitleInput.value;
-  //   const link = Constants.cardUrlInput.value;
-  //   renderCard({ name, link }, cardList);
-  //   newCardPopup.close(addCardModal);
-  //   Constants.addCardForm.reset();
-  //   addFormValidation.disableButton();
-  // }
-
   setEventListeners() {
     super.setEventListeners();
     Constants.editProfileForm.addEventListener("submit", (evt) => {

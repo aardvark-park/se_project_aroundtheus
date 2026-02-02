@@ -42,7 +42,11 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
 
 const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
-  renderCard({ name, link }, Constants.cardList);
+  console.log("form submit edit profile");
+  this._getInputValues(evt);
+  Constants.profileName.textContent = this.formDataObj.name;
+  Constants.profileDescription.textContent = this.formDataObj.description;
+  this.closePopupWithForm();
 });
 
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
