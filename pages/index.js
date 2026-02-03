@@ -33,6 +33,7 @@ addFormValidation.enableValidation();
 
 const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   evt.preventDefault();
+  console.log("newCardPopup instantiation");
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, Constants.cardList);
@@ -53,7 +54,11 @@ const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
   evt.preventDefault();
 });
 
+/* -------------------------- Class Instantiations -------------------------- */
+
+newEditPopup.setEventListeners();
 newCardPopup.setEventListeners();
+newImagePopup.setEventListeners();
 
 /* -------------------------------- Functions ------------------------------- */
 
@@ -92,4 +97,5 @@ Constants.add.addEventListener("click", () => {
 });
 
 //TODO:
-// add card form submission function, evt isn't being passed properly
+// refactor: pass profile submit handler through the class instantiation in index.js, currently in popupwithform.js
+// event listener issues came back, need to find what's causing the issue

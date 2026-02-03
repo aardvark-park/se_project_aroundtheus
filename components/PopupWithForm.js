@@ -14,21 +14,22 @@ export default class PopupWithForm extends Popup {
     this.formDataObj = Object.fromEntries(this.formData);
   }
 
-  handleProfileSubmit(evt) {
-    evt.preventDefault();
-    this._getInputValues(evt);
-    Constants.profileName.textContent = this.formDataObj.name;
-    Constants.profileDescription.textContent = this.formDataObj.description;
-    this.closePopupWithForm();
-  }
+  // handleProfileSubmit(evt) {
+  //   evt.preventDefault();
+  //   this._getInputValues(evt);
+  //   Constants.profileName.textContent = this.formDataObj.name;
+  //   Constants.profileDescription.textContent = this.formDataObj.description;
+  //   this.closePopupWithForm();
+  // }
 
   setEventListeners() {
     super.setEventListeners();
     Constants.editProfileForm.addEventListener("submit", (evt) => {
-      this.handleProfileSubmit(evt);
+      this._handleFormSubmit(evt);
+      console.log("setEventListeners editProfileForm");
     });
     Constants.addCardForm.addEventListener("submit", (evt) => {
-      console.log(evt);
+      console.log("setEventListeners addCardForm");
       this._handleFormSubmit(evt);
     });
   }
