@@ -54,12 +54,6 @@ const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
   evt.preventDefault();
 });
 
-/* -------------------------- Class Instantiations -------------------------- */
-
-newEditPopup.setEventListeners();
-newCardPopup.setEventListeners();
-newImagePopup.setEventListeners();
-
 /* -------------------------------- Functions ------------------------------- */
 
 Constants.initialCards.forEach(({ name, link }) => {
@@ -96,6 +90,7 @@ Constants.add.addEventListener("click", () => {
   newCardPopup.openPopup(Constants.addCardModal);
 });
 
-//TODO:
+// ─── Todo: ───────────────────────────────────────────────────────────────────
+
 // refactor: pass profile submit handler through the class instantiation in index.js, currently in popupwithform.js
 // event listener issues came back, need to find what's causing the issue
