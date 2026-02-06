@@ -7,16 +7,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import * as Constants from "../components/Constants.js";
 import "./index.css";
 
-/* -------------------------------- Form Data ------------------------------- */
-
-const profileTitleInput = document.querySelector("#profile-name-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input",
-);
-const cardTitleInput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#card-url-input");
-const addCardForm = document.querySelector("#add-card-form");
-const editProfileForm = document.querySelector("#edit-profile-form");
 
 /* --------------------------------- Classes -------------------------------- */
 
@@ -34,10 +24,10 @@ addFormValidation.enableValidation();
 const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   evt.preventDefault();
   console.log("newCardPopup instantiation");
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
+  const name = Constants.cardTitleInput.value;
+  const link = Constants.cardUrlInput.value;
   renderCard({ name, link }, Constants.cardList);
-  addCardForm.reset();
+  Constants.addCardForm.reset();
   addFormValidation.disableButton();
 });
 
@@ -53,6 +43,9 @@ const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
   evt.preventDefault();
 });
+
+newEditPopup.setEventListeners();
+newCardPopup.setEventListeners();
 
 /* -------------------------------- Functions ------------------------------- */
 
@@ -81,13 +74,13 @@ function handleImageClick(card) {
 /* ----------------------------- Event Listeners ---------------------------- */
 
 Constants.edit.addEventListener("click", () => {
-  profileTitleInput.value = Constants.profileName.textContent;
-  profileDescriptionInput.value = Constants.profileDescription.textContent;
+  Constants.profileTitleInput.value = Constants.profileName.textContent;
+  Constants.profileDescriptionInput.value = Constants.profileDescription.textContent;
   editFormValidation.resetValidation();
-  newEditPopup.openPopup(Constants.editProfileModal);
+  newEditPopup.openPopup();
 });
 Constants.add.addEventListener("click", () => {
-  newCardPopup.openPopup(Constants.addCardModal);
+  newCardPopup.openPopup();
 });
 
 // ─── Todo: ───────────────────────────────────────────────────────────────────

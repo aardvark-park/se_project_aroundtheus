@@ -4,7 +4,10 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
+    this._boundhandleFormSubmit = (evt) => {
+      handleFormSubmit(evt);
+      console.log("boundHandleFormSubmit");
+    };
   }
 
   _getInputValues(evt) {
@@ -24,21 +27,17 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    Constants.editProfileForm.addEventListener("submit", (evt) => {
-      this._handleFormSubmit(evt);
-      console.log("setEventListeners editProfileForm");
-    });
-    Constants.addCardForm.addEventListener("submit", (evt) => {
-      console.log("setEventListeners addCardForm");
-      this._handleFormSubmit(evt);
-    });
+    console.log("setEventListeners PopupWithForm.js");
+    Constants.editProfileForm.addEventListener("submit", this._boundhandleFormSubmit);
+    Constants.addCardForm.addEventListener("submit", this._boundhandleFormSubmit);
   }
 
   openPopup() {
     super.openPopup();
-    this.setEventListeners();
   }
   closePopupWithForm() {
     super.closePopup();
+    Constants.editProfileForm.removeEventListener("submit", this._boundhandleFormSubmit);
+    Constants.addCardForm.removeEventListener("submit", this._boundhandleFormSubmit);
   }
 }
