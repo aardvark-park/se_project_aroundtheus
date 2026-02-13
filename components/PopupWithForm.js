@@ -7,7 +7,6 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._boundhandleFormSubmit = (evt) => {
       handleFormSubmit(evt);
-      console.log("boundHandleFormSubmit");
     };
   }
 
@@ -37,7 +36,5 @@ export default class PopupWithForm extends Popup {
   }
   closePopupWithForm() {
     super.closePopup();
-    Constants.editProfileForm.removeEventListener("submit", this._boundhandleFormSubmit);
-    Constants.addCardForm.removeEventListener("submit", this._boundhandleFormSubmit);
   }
 }

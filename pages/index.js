@@ -21,7 +21,7 @@ const addFormValidation = new FormValidator(
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
-const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
+const newCardPopup = new PopupWithForm("#add-card-form", (evt) => {
   evt.preventDefault();
   console.log("newCardPopup instantiation");
   const name = Constants.cardTitleInput.value;
@@ -31,7 +31,7 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   addFormValidation.disableButton();
 });
 
-const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
+const newEditPopup = new PopupWithForm("#edit-profile-form", (evt) => {
   evt.preventDefault();
   console.log("form submit edit profile");
   this._getInputValues(evt);
@@ -87,3 +87,7 @@ Constants.add.addEventListener("click", () => {
 
 // refactor: pass profile submit handler through the class instantiation in index.js, currently in popupwithform.js
 // event listener issues came back, need to find what's causing the issue
+// fix: tight coupling of Constants.js with other classes
+// fix: _getInputValues in PopupWithForm.js
+// set up Section.js
+// set up UserInfo.js
