@@ -21,7 +21,7 @@ const addFormValidation = new FormValidator(
 editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
-const newCardPopup = new PopupWithForm("#add-card-form", (evt) => {
+const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   evt.preventDefault();
   console.log("newCardPopup instantiation");
   const name = Constants.cardTitleInput.value;
@@ -31,7 +31,7 @@ const newCardPopup = new PopupWithForm("#add-card-form", (evt) => {
   addFormValidation.disableButton();
 });
 
-const newEditPopup = new PopupWithForm("#edit-profile-form", (evt) => {
+const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
   evt.preventDefault();
   console.log("form submit edit profile");
   this._getInputValues(evt);
