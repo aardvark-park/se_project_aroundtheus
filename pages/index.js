@@ -85,7 +85,6 @@ Constants.add.addEventListener("click", () => {
 // ─── Todo: ───────────────────────────────────────────────────────────────────
 
 // refactor: pass profile submit handler through the class instantiation in index.js, currently in popupwithform.js
-// event listener issues came back, need to find what's causing the issue
 // fix: tight coupling of Constants.js with other classes
 // fix: _getInputValues in PopupWithForm.js
 // set up Section.js
