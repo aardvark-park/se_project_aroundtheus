@@ -45,7 +45,6 @@ const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
 });
 
 newEditPopup.setEventListeners();
-newCardPopup.setEventListeners();
 
 /* -------------------------------- Functions ------------------------------- */
 
