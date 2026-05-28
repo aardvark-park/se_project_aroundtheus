@@ -1,13 +1,11 @@
-import * as Constants from "./Constants.js";
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
     this._popupElement = document.querySelector(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._boundHandleFormSubmit = (evt) => {
-      handleFormSubmit(evt);
-    };
+    // this._boundHandleFormSubmit = handleFormSubmit;
+    this.boundHandleFormSubmit = handleFormSubmit;
   }
 
   _getInputValues(evt) {
@@ -28,7 +26,13 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     console.log("setEventListeners PopupWithForm.js");
-    this._popupForm.addEventListener("submit", this._boundHandleFormSubmit);
+    this._popupForm.addEventListener("submit", (evt) => {
+      evt.preventDefault;
+
+      const formData = this._getInputValues();
+      this.boundHandleFormSubmit(formData);
+      
+    });
   }
 
   openPopup() {

@@ -22,7 +22,6 @@ editFormValidation.enableValidation();
 addFormValidation.enableValidation();
 
 const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
-  evt.preventDefault();
   console.log("newCardPopup instantiation");
   const name = Constants.cardTitleInput.value;
   const link = Constants.cardUrlInput.value;
@@ -31,10 +30,10 @@ const newCardPopup = new PopupWithForm("#add-modal", (evt) => {
   addFormValidation.disableButton();
 });
 
-const newEditPopup = new PopupWithForm("#edit-modal", (evt) => {
-  evt.preventDefault();
+const newEditPopup = new PopupWithForm("#edit-modal", () => {
   console.log("form submit edit profile");
-  this._getInputValues(evt);
+  //evt.preventDefault();
+  newEditPopup._getInputValues();
   Constants.profileName.textContent = this.formDataObj.name;
   Constants.profileDescription.textContent = this.formDataObj.description;
   this.closePopupWithForm();
