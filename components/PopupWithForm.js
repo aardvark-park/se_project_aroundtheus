@@ -5,14 +5,18 @@ export default class PopupWithForm extends Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
     // this._boundHandleFormSubmit = handleFormSubmit;
-    this.boundHandleFormSubmit = handleFormSubmit;
+    this._handleFormSubmit = handleFormSubmit;
   }
 
   _getInputValues(evt) {
     //collects data from all input fields and returns it as an object
-    evt.preventDefault();
-    this.formData = new FormData(evt.target);
-    this.formDataObj = Object.fromEntries(this.formData);
+    
+    const inputList = Array.from(this._popupForm.querySelectorAll('input'));
+    const formValues = {};
+
+    inputList.forEach(input => {
+      formValues[input.name] = input.value;
+    })
   }
 
   // handleProfileSubmit(evt) {
@@ -30,7 +34,7 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault;
 
       const formData = this._getInputValues();
-      this.boundHandleFormSubmit(formData);
+      this._handleFormSubmit(formData);
       
     });
   }
