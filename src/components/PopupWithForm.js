@@ -10,13 +10,15 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues(evt) {
     //collects data from all input fields and returns it as an object
-    
-    const inputList = Array.from(this._popupForm.querySelectorAll('input'));
+
+    const inputList = Array.from(this._popupForm.querySelectorAll("input"));
     const formValues = {};
 
-    inputList.forEach(input => {
+    inputList.forEach((input) => {
       formValues[input.name] = input.value;
-    })
+    });
+
+    return formValues;
   }
 
   // handleProfileSubmit(evt) {
@@ -31,11 +33,10 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     console.log("setEventListeners PopupWithForm.js");
     this._popupForm.addEventListener("submit", (evt) => {
-      evt.preventDefault;
+      evt.preventDefault();
 
       const formData = this._getInputValues();
       this._handleFormSubmit(formData);
-      
     });
   }
 

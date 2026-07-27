@@ -22,19 +22,17 @@ addFormValidation.enableValidation();
 
 const newCardPopup = new PopupWithForm("#add-modal", (formData) => {
   console.log("newCardPopup instantiation");
-  const name = Constants.cardTitleInput.value;
-  const link = Constants.cardUrlInput.value;
+  const { name, link } = formData;
   renderCard({ name, link }, Constants.cardList);
   Constants.addCardForm.reset();
   addFormValidation.disableButton();
 });
 
-const newEditPopup = new PopupWithForm("#edit-modal", () => {
-  console.log("form submit edit profile");
-  newEditPopup._getInputValues();
-  Constants.profileName.textContent = this.formValue.name;
-  Constants.profileDescription.textContent = this.formValue.description;
-  this.closePopupWithForm();
+const newEditPopup = new PopupWithForm("#edit-modal", (formValues) => {
+  console.log(formValues);
+  Constants.profileName.textContent = formValues.name;
+  Constants.profileDescription.textContent = formValues.description;
+  newEditPopup.closePopupWithForm();
 });
 
 const newImagePopup = new PopupWithImage("#image-modal", (evt) => {
@@ -82,7 +80,6 @@ Constants.add.addEventListener("click", () => {
 
 // ─── Todo: ───────────────────────────────────────────────────────────────────
 
-// refactor: pass profile submit handler through the class instantiation in index.js, currently in popupwithform.js
 // fix: tight coupling of Constants.js with other classes
 // fix: _getInputValues in PopupWithForm.js
 // set up Section.js
