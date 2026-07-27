@@ -7,7 +7,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import * as Constants from "../components/Constants.js";
 import "./index.css";
 
-
 /* --------------------------------- Classes -------------------------------- */
 
 const editFormValidation = new FormValidator(
@@ -72,7 +71,8 @@ function handleImageClick(card) {
 
 Constants.edit.addEventListener("click", () => {
   Constants.profileTitleInput.value = Constants.profileName.textContent;
-  Constants.profileDescriptionInput.value = Constants.profileDescription.textContent;
+  Constants.profileDescriptionInput.value =
+    Constants.profileDescription.textContent;
   editFormValidation.resetValidation();
   newEditPopup.openPopup();
 });
