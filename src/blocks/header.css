@@ -9,6 +9,25 @@
   height: 33px;
 }
 
+.header__theme {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+  height: 38px;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+  .header__logo {
+    content: url("../images/logo-light.svg");
+  }
+  .header__theme {
+    content: url("../images/dark-mode.svg");
+  }
+}
+
 @media screen and (max-width: 800px) {
   .header__logo {
     margin-left: 32px;

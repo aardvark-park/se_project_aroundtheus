@@ -28,6 +28,12 @@
   justify-content: space-between;
 }
 
+@media (prefers-color-scheme: light) {
+  .card__description {
+    background-color: #e6e6e6;
+  }
+}
+
 .card__header {
   text-overflow: ellipsis;
   white-space: nowrap;

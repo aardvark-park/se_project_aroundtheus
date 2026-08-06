@@ -3,6 +3,13 @@
   color: white;
 }
 
+@media (prefers-color-scheme: light) {
+  .page {
+    background-color: white;
+    color: black;
+  }
+}
+
 .page__content {
   display: flex;
   flex-direction: column;
