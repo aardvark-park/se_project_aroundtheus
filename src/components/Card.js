@@ -53,4 +53,16 @@ export default class Card {
 
     return this._cardElement;
   }
+
+  addLightTheme() {
+    this._cardElement
+      .querySelector(".card__description")
+      .classList.add("card__theme-light");
+  }
+
+  removeLightTheme() {
+    this._cardElement
+      .querySelector(".card__description")
+      .classList.remove("card__theme-light");
+  }
 }

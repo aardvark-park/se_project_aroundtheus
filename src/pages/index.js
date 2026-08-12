@@ -6,6 +6,10 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import * as Constants from "../components/Constants.js";
 import "./index.css";
+import logo from "../images/logo.svg";
+import logo_light from "../images/logo-light.svg";
+import light_mode from "../images/light-mode.svg";
+import dark_mode from "../images/dark-mode.svg";
 
 /* --------------------------------- Classes -------------------------------- */
 
@@ -50,6 +54,7 @@ Constants.initialCards.forEach(({ name, link }) => {
 function createCard(card) {
   const cardInstance = new Card(card, "#card-template", handleImageClick);
   const cardElement = cardInstance.getView();
+  Constants.cardElements.push(cardInstance);
   return cardElement;
 }
 
@@ -78,9 +83,34 @@ Constants.add.addEventListener("click", () => {
   newCardPopup.openPopup();
 });
 
+Constants.theme.addEventListener("click", () => {
+  if (Constants.body.classList.contains("page__light")) {
+    Constants.body.classList.remove("page__light");
+    Constants.cardElements.forEach((card) => {
+      card.removeLightTheme();
+    });
+    Constants.theme.src = light_mode;
+    Constants.logo.src = logo;
+    Constants.edit.classList.remove("profile__edit-button-light");
+    Constants.add.classList.remove("profile__add-button-light");
+  } else {
+    Constants.body.classList.add("page__light");
+    Constants.cardElements.forEach((card) => {
+      card.addLightTheme();
+    });
+    Constants.theme.src = dark_mode;
+    Constants.logo.src = logo_light;
+    Constants.edit.classList.add("profile__edit-button-light");
+    Constants.add.classList.add("profile__add-button-light");
+  }
+});
+
 // ─── Todo: ───────────────────────────────────────────────────────────────────
 
+// fix: light theme needs to have icon for theme change changed
+// fix: light theme needs main logo switched to the light them logo
 // fix: tight coupling of Constants.js with other classes
 // fix: _getInputValues in PopupWithForm.js
 // set up Section.js
 // set up UserInfo.js
+// QoL: add animation to light/dark mode toggle

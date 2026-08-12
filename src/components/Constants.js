@@ -27,6 +27,8 @@ export const initialCards = [
   },
 ];
 
+export const cardElements = [];
+
 /* -------------------------------- Elements -------------------------------- */
 
 export const body = document.querySelector(".page");
@@ -40,7 +42,7 @@ export const editProfileCloseModal =
 export const addCardCloseModal = addCardModal.querySelector(".modal__close");
 export const profileName = document.querySelector(".profile__title");
 export const profileDescription = document.querySelector(
-  ".profile__description"
+  ".profile__description",
 );
 export const previewImageModal = document.querySelector("#image-modal");
 export const previewImageCloseModal =
@@ -54,12 +56,14 @@ export const addCardSubmit = addCardModal.querySelector(".modal__save");
 export const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 export const modals = document.querySelectorAll(".modal");
+export const theme = document.querySelector(".header__theme");
+export const logo = document.querySelector(".header__logo");
 
 /* -------------------------------- Form Data ------------------------------- */
 
 export const profileTitleInput = document.querySelector("#profile-name-input");
 export const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 export const cardTitleInput = document.querySelector("#card-title-input");
 export const cardUrlInput = document.querySelector("#card-url-input");

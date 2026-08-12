@@ -10,6 +10,11 @@
   }
 }
 
+.page__light {
+  background-color: white;
+  color: black;
+}
+
 .page__content {
   display: flex;
   flex-direction: column;

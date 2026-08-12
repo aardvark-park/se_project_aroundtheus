@@ -21,6 +21,11 @@
   border: 1px solid white;
 }
 
+.profile__edit-button-light {
+  background: transparent url(../images/edit-button-light.svg) center no-repeat;
+  border: 1px solid black;
+}
+
 .profile__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
@@ -34,6 +39,11 @@
   margin-left: auto;
   border: 2px solid white;
   border-radius: 2px;
+}
+
+.profile__add-button-light {
+  background: transparent url(../images/add-button-light.svg) center no-repeat;
+  border: 2px solid black;
 }
 
 .profile__add-button:hover {
