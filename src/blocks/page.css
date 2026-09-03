@@ -1,6 +1,7 @@
 .page {
   background-color: black;
   color: white;
+  transition: background-color 0.8s;
 }
 
 @media (prefers-color-scheme: light) {
@@ -13,6 +14,7 @@
 .page__light {
   background-color: white;
   color: black;
+  transition: background-color 1s;
 }
 
 .page__content {

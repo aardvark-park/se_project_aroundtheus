@@ -70,6 +70,30 @@ function handleImageClick(card) {
   newImagePopup.openPopup(Constants.previewImageModal);
 }
 
+function themeDarkMode() {
+  Constants.body.classList.remove("page__light");
+  Constants.cardElements.forEach((card) => {
+    card.removeLightTheme();
+  });
+  Constants.theme.src = light_mode;
+  Constants.logo.src = logo;
+  Constants.theme.style.animation = "themeSpinLeft 0.5s linear 1";
+  Constants.edit.classList.remove("profile__edit-button-light");
+  Constants.add.classList.remove("profile__add-button-light");
+}
+
+function themeLightMode() {
+  Constants.body.classList.add("page__light");
+  Constants.cardElements.forEach((card) => {
+    card.addLightTheme();
+  });
+  Constants.theme.src = dark_mode;
+  Constants.logo.src = logo_light;
+  Constants.theme.style.animation = "themeSpinRight 0.5s linear 1";
+  Constants.edit.classList.add("profile__edit-button-light");
+  Constants.add.classList.add("profile__add-button-light");
+}
+
 /* ----------------------------- Event Listeners ---------------------------- */
 
 Constants.edit.addEventListener("click", () => {
@@ -85,30 +109,14 @@ Constants.add.addEventListener("click", () => {
 
 Constants.theme.addEventListener("click", () => {
   if (Constants.body.classList.contains("page__light")) {
-    Constants.body.classList.remove("page__light");
-    Constants.cardElements.forEach((card) => {
-      card.removeLightTheme();
-    });
-    Constants.theme.src = light_mode;
-    Constants.logo.src = logo;
-    Constants.edit.classList.remove("profile__edit-button-light");
-    Constants.add.classList.remove("profile__add-button-light");
+    themeDarkMode();
   } else {
-    Constants.body.classList.add("page__light");
-    Constants.cardElements.forEach((card) => {
-      card.addLightTheme();
-    });
-    Constants.theme.src = dark_mode;
-    Constants.logo.src = logo_light;
-    Constants.edit.classList.add("profile__edit-button-light");
-    Constants.add.classList.add("profile__add-button-light");
+    themeLightMode();
   }
 });
 
 // ─── Todo: ───────────────────────────────────────────────────────────────────
 
-// fix: light theme needs to have icon for theme change changed
-// fix: light theme needs main logo switched to the light them logo
 // fix: tight coupling of Constants.js with other classes
 // fix: _getInputValues in PopupWithForm.js
 // set up Section.js
