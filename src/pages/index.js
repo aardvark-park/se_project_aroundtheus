@@ -121,4 +121,4 @@ Constants.theme.addEventListener("click", () => {
 // fix: _getInputValues in PopupWithForm.js
 // set up Section.js
 // set up UserInfo.js
-// QoL: add animation to light/dark mode toggle
+// fix: if user has browser set to prefer light mode, toggle does not function

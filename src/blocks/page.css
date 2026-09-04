@@ -4,13 +4,6 @@
   transition: background-color 0.8s;
 }
 
-@media (prefers-color-scheme: light) {
-  .page {
-    background-color: white;
-    color: black;
-  }
-}
-
 .page__light {
   background-color: white;
   color: black;
