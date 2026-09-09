@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -9,9 +10,9 @@ module.exports = {
     main: "./src/pages/index.js",
   },
   output: {
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
-    publicPath: "",
+    publicPath: "/",
   },
   target: ["web", "es5"],
   stats: "errors-only",
@@ -51,6 +52,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
       favicon: "./src/images/favicon.ico",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "src/404.html", to: "404.html" }],
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
